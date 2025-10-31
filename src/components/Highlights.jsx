@@ -65,7 +65,7 @@ export default function Highlights() {
               key={tab.title + i}
               onClick={() => setTabIdx(i)}
               className={
-                `w-1/3 py-6 text-3xl font-medium outline-none transition-all duration-300` +
+                `w-1/3 py-6 not-last:mr-3 text-3xl font-medium outline-none transition-all duration-300` +
                 (tabIdx === i
                   ? " bg-[#61912c] text-white font-semibold"
                   : " bg-gray-200 hover:bg-gray-300 text-black font-medium")
