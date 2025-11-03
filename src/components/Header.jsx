@@ -17,9 +17,7 @@ export default function Header() {
     <header
       className={
         "w-full fixed top-0 left-0 right-0 z-[1000] transition-colors duration-300 " +
-        (scrolled
-          ? "bg-black shadow-md"
-          : "bg-black/50")
+        (scrolled ? "bg-black shadow-md" : "bg-transparent")
       }
     >
       <div className="mx-auto flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-10 max-w-[1400px]">
@@ -28,7 +26,9 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="Brookfield International School"
-            className="w-auto h-12 sm:h-16 select-none"
+            className={`w-auto h-12 block sm:h-16 select-none ${
+              scrolled ? "block" : "hidden"
+            }`}
             draggable={false}
           />
         </div>
@@ -36,7 +36,9 @@ export default function Header() {
         {/* Right: Phone */}
         <a
           href="tel:+919066790662"
-          className="flex items-center gap-2 text-white text-lg font-medium"
+          className={`flex items-center gap-2 text-lg font-medium ${
+            scrolled ? "text-white" : "text-black"
+          }`}
         >
           <Phone className="h-5 w-5" />
           <span>90667 90662</span>

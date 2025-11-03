@@ -16,18 +16,39 @@ export default function Hero() {
       {/* Main Content Grid */}
       <div className="relative w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between px-4 lg:px-12 py-8 lg:py-0 z-10">
         {/* LEFT: Logo and Text */}
-        <div className="flex-1 flex flex-col items-start max-w-[610px]">
+        <div className="flex-1 flex flex-col md:mt-20 items-start max-w-[610px]">
+          {/* Admissions Badge */}
+          <div className="flex flex-col gap-3 mb-6">
+            <div className="inline-flex items-center gap-3 bg-linear-to-r from-green-600 to-green-500 px-6 py-3 rounded-full shadow-2xl border-2 border-white hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+              </span>
+              <span className="text-white font-extrabold text-xl sm:text-2xl uppercase tracking-wider drop-shadow-lg">
+                Admissions Open
+              </span>
+            </div>
+            <div className="bg-white/95 backdrop-blur-sm border-2 border-green-600 rounded-lg px-5 py-2.5 shadow-lg inline-block">
+              <span className="text-gray-900 font-bold text-lg sm:text-xl">
+                Academic Year:{" "}
+              </span>
+              <span className="text-green-600 font-extrabold text-xl sm:text-2xl">
+                2026-27
+              </span>
+            </div>
+          </div>
           {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-[54px] font-extrabold text-white leading-[1.08] mb-4 drop-shadow-xl uppercase">
-            DISCOVER YOUR <br className="hidden sm:inline" />
-            CHILD’S GENIUS AT
+          <h1 className="text-3xl sm:text-5xl md:text-[54px] font-extrabold text-black leading-[1.08] mb-4 drop-shadow-xl uppercase">
+            Give your child <br className="hidden sm:inline" />
+            Best Learning Experience at{" "}
           </h1>
           {/* Sub-headline Banner */}
           <div className="mb-6">
-            <span className="inline-block bg-[#071a6f] pl-3 pr-7 py-1.5 text-white text-[30px] font-semibold drop-shadow-sm tracking-wider">
+            <span className="inline-block bg-[#acf15c] pl-3 pr-7 py-1.5 text-black text-[30px] font-semibold drop-shadow-sm tracking-wider">
               Brookfield International School
             </span>
           </div>
+          
           {/* Bullet List */}
           {/* <ul className="space-y-3 text-lg sm:text-3xl text-white font-semibold mb-2">
             <li className="flex items-center gap-2">
@@ -60,34 +81,36 @@ export default function Hero() {
             <input
               type="text"
               placeholder="Parent's Name"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
             />
             <input
               type="text"
               placeholder="Student's Name"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
             />
             <input
               type="email"
               placeholder="Email"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
             />
             <input
               type="tel"
               placeholder="Phone"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
             />
             <select
               name="class"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base bg-white cursor-pointer"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base bg-white cursor-pointer"
               required
               defaultValue=""
             >
-              <option value="" disabled>Class Applying For</option>
+              <option value="" disabled>
+                Class Applying For
+              </option>
               <option value="pre-nursery">Pre-Nursery</option>
               <option value="nursery">Nursery</option>
               <option value="lkg">LKG (Lower Kindergarten)</option>
@@ -107,7 +130,7 @@ export default function Hero() {
             </select>
             <button
               type="submit"
-              className="w-full py-3 rounded-md bg-[#071a6f] text-white text-lg font-semibold mt-2 hover:bg-[#132091] transition"
+              className="w-full py-3 rounded-md bg-[#acf15c] text-black text-lg font-semibold mt-2 hover:bg-[#abf15cc3] transition"
             >
               Submit
             </button>
