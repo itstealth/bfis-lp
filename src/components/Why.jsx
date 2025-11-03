@@ -89,12 +89,12 @@ export default function Why() {
   }, []);
 
   return (
-    <section className="bg-grid-pattern py-20">
+    <section className="bg-grid-pattern sm:py-20 py-10">
       <div className="container max-w-[1400px] mx-auto px-4">
-        <h2 className="text-center text-4xl font-bold md:text-5xl">
+        <h2 className="text-center text-2xl sm:text-3xl font-bold md:text-4xl">
           Why Brookfield?
         </h2>
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <div className="sm:mt-16 mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
           {features.map((feature, index) => {
             const colored = hoveredIndex !== null ? hoveredIndex === index : activeIndex === index;
             return (

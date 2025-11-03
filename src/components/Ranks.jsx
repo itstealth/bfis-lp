@@ -8,10 +8,10 @@ export default function Ranks() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           {/* Left: World Record */}
           <div className="flex flex-col items-center text-center md:text-left md:items-start">
-            <h2 className="text-3xl font-extrabold leading-tight text-zinc-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-zinc-900">
               Be a part of World Record
-              <br />
-              Setting School!
+              <br className="hidden sm:block" />
+              <span className="font-semibold"> Setting School!</span>
             </h2>
 
             <img
@@ -22,7 +22,7 @@ export default function Ranks() {
               loading="lazy"
             />
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-700">
+            <p className="mt-8 max-w-2xl sm:text-lg text-base leading-8 text-zinc-700">
               Brookfield set a world record with its virtual Enviro Tiger Fest 2020 and
               was awarded a certificate by World Book of Records, United Kingdom.
             </p>
@@ -30,10 +30,10 @@ export default function Ranks() {
 
           {/* Right: Rank + Times of India */}
           <div className="flex flex-col items-center text-center md:text-left md:items-start">
-            <h2 className="text-3xl font-extrabold leading-tight text-zinc-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-zinc-900">
               Brookfield International School
-              <br />
-              <span className="font-semibold">has marked its</span>
+              <br className="hidden sm:block" />
+              <span className="font-semibold"> has marked its</span>
             </h2>
 
             <div className="mt-8 flex flex-col gap-6">

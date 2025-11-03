@@ -1,8 +1,8 @@
 const stats = [
   { icon: "/stats/1.png", value: "2000+", label: "Students" },
   { icon: "/stats/2.png", value: "150+", label: "Faculty" },
-  { icon: "/stats/3.png", value: "7+", label: "Acres Campus" },
   { icon: "/stats/4.png", value: "99%", label: "Results" },
+  { icon: "/stats/3.png", value: "7+", label: "Acres Campus" },
 ];
 
 export default function Stats() {
@@ -13,7 +13,7 @@ export default function Stats() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="flex w-full items-center justify-center gap-4 p-6 transition-transform duration-300 hover:scale-110 md:w-auto"
+              className="flex w-full items-center sm:justify-center justify-start gap-4 p-6 transition-transform duration-300 hover:scale-110 md:w-auto"
             >
               <img
                 src={stat.icon}

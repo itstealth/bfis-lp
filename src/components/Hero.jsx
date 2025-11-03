@@ -18,7 +18,7 @@ export default function Hero() {
         {/* LEFT: Logo and Text */}
         <div className="flex-1 flex flex-col items-start max-w-[610px]">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-[54px] font-extrabold text-white leading-[1.08] mb-4 drop-shadow-xl uppercase">
+          <h1 className="text-3xl sm:text-5xl md:text-[54px] font-extrabold text-white leading-[1.08] mb-4 drop-shadow-xl uppercase">
             DISCOVER YOUR <br className="hidden sm:inline" />
             CHILD’S GENIUS AT
           </h1>

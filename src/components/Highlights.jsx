@@ -9,7 +9,7 @@ const TABS = [
       img: "/academics.webp", // placeholder path, update to your real image path
       text: (
         <>
-          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             We prepare our students to be global citizens with exchange
             programs, international interactions, and events featuring foreign
             dignitaries.
@@ -24,7 +24,7 @@ const TABS = [
       img: "/award.jpg",
       text: (
         <>
-          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             {/* Replace this content with the actual "Award-Winning" description */}
             Rated as the top emerging school in the tri-city by Times School
             Survey in 2020 & 2021, and holder of a world record with World Book
@@ -40,7 +40,7 @@ const TABS = [
       img: "/digital-classrooms.jpg",
       text: (
         <>
-          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             Brookfield is equipped with award-winning interactive software to
             enhance student engagement in both online and in-class learning.
           </p>
@@ -54,10 +54,10 @@ export default function Highlights() {
   const [tabIdx, setTabIdx] = useState(0);
 
   return (
-    <section className="w-full border-t border-black/10 bg-white pt-8 pb-12 md:py-16">
+    <section className="w-full border-t border-black/10 bg-white pt-8 pb-0 md:py-16">
       <div className="max-w-7xl mx-auto px-2 md:px-6">
-        <h2 className="text-center text-black text-4xl font-bold md:text-5xl mb-9 mt-4 md:mt-0 md:mb-12">
-          Highlights the Global Aspect
+        <h2 className="text-center text-black text-2xl sm:text-3xl font-bold md:text-4xl mb-9 mt-4 md:mt-0 md:mb-12">
+          BFIS Global Aspect
         </h2>
         {/* Tabs */}
         <div className="flex overflow-hidden shadow-sm mb-0 border-b border-gray-200">
@@ -66,10 +66,10 @@ export default function Highlights() {
               key={tab.title + i}
               onClick={() => setTabIdx(i)}
               className={
-                `w-1/3 py-6 not-last:mr-3 text-base sm:text-2xl font-medium outline-none transition-all duration-300` +
+                `w-1/3 py-6 not-last:mr-3 text-sm sm:text-2xl font-normal sm:font-medium outline-none transition-all duration-300` +
                 (tabIdx === i
-                  ? " bg-[#61912c] text-white font-semibold"
-                  : " bg-gray-200 hover:bg-gray-300 text-black font-medium")
+                  ? " bg-[#61912c] text-white font-normal sm:font-semibold"
+                  : " bg-gray-200 hover:bg-gray-300 text-black font-normal sm:font-medium")
               }
             >
               {tab.title}
@@ -86,7 +86,7 @@ export default function Highlights() {
               style={{ minWidth: 280 }}
             />
           </div>
-          <div className="flex-1 md:pt-12 pt-8 pb-6 md:pb-0">
+          <div className="flex-1 md:pt-12 pt-0 pb-6 md:pb-0">
             {TABS[tabIdx].content.text}
           </div>
         </div>

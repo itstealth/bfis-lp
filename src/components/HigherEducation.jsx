@@ -39,7 +39,7 @@ const Card = ({ level }) => (
     </div>
     <div className="pt-4 text-center text-white">
       <h3 className="text-2xl sm:text-3xl font-bold">{level.title}</h3>
-      <p className="mt-2 text-2xl">{level.description}</p>
+      <p className="mt-2 sm:text-2xl text-base">{level.description}</p>
     </div>
   </div>
 );
@@ -47,14 +47,14 @@ const Card = ({ level }) => (
 export default function HigherEducation() {
   return (
     <section
-      className="relative bg-cover bg-center py-20"
+      className="relative bg-cover bg-center sm:py-20 py-10"
       style={{ backgroundImage: "url('/HigherEdu-Bg.png')" }}
     >
       <div className="container relative mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-4xl font-bold text-white md:text-5xl">
+        <h2 className="text-center text-2xl sm:text-3xl font-bold text-white md:text-4xl">
           From Foundation to Higher Education
         </h2>
-        <div className="mt-16">
+        <div className="sm:mt-16 mt-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-6">
             <div className="md:col-span-2">
               <Card level={educationData[0]} />
@@ -72,7 +72,7 @@ export default function HigherEducation() {
             <div className="md:col-span-2">
               <Card level={educationData[4]} />
             </div>
-            <div className="md:col-span-1" />
+            {/* <div className="md:col-span-1" /> */}
           </div>
         </div>
       </div>
