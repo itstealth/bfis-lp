@@ -16,10 +16,10 @@ export default function Legacy() {
             <h3 className="text-[28px] sm:text-5xl font-bold text-zinc-800">
               One Way. Our Methods. Our Difference.
             </h3>
-            <p className="mt-6 text-2xl text-black">
+            <p className="mt-6 text-xl text-black">
               Holistic Education at BFIS
             </p>
-            <p className="mt-4 text-2xl text-black">
+            <p className="mt-4 text-xl text-black">
               Adding that holistic perspective of the child as the core essence
               of our academic system, we provide a comprehensive learning
               experience through Academics, Events, Facilities, and more.

@@ -69,7 +69,7 @@ const FeatureCard = ({ feature, colored }) => (
         `${colored ? 'text-white' : 'text-zinc-800'}`
       }>{feature.title}</h3>
       <p className={
-        `mt-3 md:mt-4 text-base md:text-lg transition-colors duration-400 ease-[cubic-bezier(.7,0,.26,1)] ` +
+        `mt-3 md:mt-4 text-base transition-colors duration-400 ease-[cubic-bezier(.7,0,.26,1)] ` +
         `${colored ? 'text-gray-100' : 'text-gray-600'}`
       }>{feature.description}</p>
     </div>

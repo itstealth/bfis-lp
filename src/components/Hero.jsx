@@ -81,12 +81,30 @@ export default function Hero() {
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
               required
             />
-            <input
-              type="text"
-              placeholder="Class Applying For"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base"
+            <select
+              name="class"
+              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#071a6f] focus:outline-none transition text-base bg-white cursor-pointer"
               required
-            />
+              defaultValue=""
+            >
+              <option value="" disabled>Class Applying For</option>
+              <option value="pre-nursery">Pre-Nursery</option>
+              <option value="nursery">Nursery</option>
+              <option value="lkg">LKG (Lower Kindergarten)</option>
+              <option value="ukg">UKG (Upper Kindergarten)</option>
+              <option value="grade-i">Grade I</option>
+              <option value="grade-ii">Grade II</option>
+              <option value="grade-iii">Grade III</option>
+              <option value="grade-iv">Grade IV</option>
+              <option value="grade-v">Grade V</option>
+              <option value="grade-vi">Grade VI</option>
+              <option value="grade-vii">Grade VII</option>
+              <option value="grade-viii">Grade VIII</option>
+              <option value="grade-ix">Grade IX</option>
+              <option value="grade-x">Grade X</option>
+              <option value="grade-xi">Grade XI</option>
+              <option value="grade-xii">Grade XII</option>
+            </select>
             <button
               type="submit"
               className="w-full py-3 rounded-md bg-[#071a6f] text-white text-lg font-semibold mt-2 hover:bg-[#132091] transition"

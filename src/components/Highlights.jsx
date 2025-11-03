@@ -9,7 +9,7 @@ const TABS = [
       img: "/academics.webp", // placeholder path, update to your real image path
       text: (
         <>
-          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             We prepare our students to be global citizens with exchange
             programs, international interactions, and events featuring foreign
             dignitaries.
@@ -21,10 +21,10 @@ const TABS = [
   {
     title: "Award-Winning",
     content: {
-      img: "/academics.webp",
+      img: "/award.jpg",
       text: (
         <>
-          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             {/* Replace this content with the actual "Award-Winning" description */}
             Rated as the top emerging school in the tri-city by Times School
             Survey in 2020 & 2021, and holder of a world record with World Book
@@ -37,10 +37,10 @@ const TABS = [
   {
     title: "Digital Classrooms",
     content: {
-      img: "/academics.webp",
+      img: "/digital-classrooms.jpg",
       text: (
         <>
-          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="text-xl leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             Brookfield is equipped with award-winning interactive software to
             enhance student engagement in both online and in-class learning.
           </p>
@@ -57,7 +57,7 @@ export default function Highlights() {
     <section className="w-full border-t border-black/10 bg-white pt-8 pb-12 md:py-16">
       <div className="max-w-7xl mx-auto px-2 md:px-6">
         <h2 className="text-center text-black text-4xl font-bold md:text-5xl mb-9 mt-4 md:mt-0 md:mb-12">
-          Highlights the global aspect
+          Highlights the Global Aspect
         </h2>
         {/* Tabs */}
         <div className="flex overflow-hidden shadow-sm mb-0 border-b border-gray-200">
