@@ -81,7 +81,7 @@ export default function WhyChoose() {
 
   return (
     <>
-      <section className="w-full sm:py-10 pb-8 pt-0 md:pt-0 md:pb-20 overflow-hidden">
+      <section className="w-full sm:py-10 pb-8 md:pb-20 overflow-hidden">
         <div className="mx-auto max-w-none px-0">
           <h2 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight italic leading-tight mb-8 md:mb-10">
             Why Parents Choose BFIS?
