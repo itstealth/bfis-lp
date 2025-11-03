@@ -39,7 +39,7 @@ const Card = ({ level }) => (
     </div>
     <div className="pt-4 text-center text-white">
       <h3 className="text-2xl sm:text-3xl font-bold">{level.title}</h3>
-      <p className="mt-2 text-2xl sm:text-3xl">{level.description}</p>
+      <p className="mt-2 text-2xl">{level.description}</p>
     </div>
   </div>
 );

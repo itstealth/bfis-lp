@@ -9,7 +9,7 @@ const TABS = [
       img: "/academics.webp", // placeholder path, update to your real image path
       text: (
         <>
-          <p className="text-3xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
             We prepare our students to be global citizens with exchange
             programs, international interactions, and events featuring foreign
             dignitaries.
@@ -24,24 +24,25 @@ const TABS = [
       img: "/academics.webp",
       text: (
         <>
-          <p className="text-3xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
             {/* Replace this content with the actual "Award-Winning" description */}
-            Our school consistently receives top academic, sports, and faculty
-            awards nationally and internationally.
+            Rated as the top emerging school in the tri-city by Times School
+            Survey in 2020 & 2021, and holder of a world record with World Book
+            of Records, UK.
           </p>
         </>
       ),
     },
   },
   {
-    title: "Global Exposure",
+    title: "Digital Classrooms",
     content: {
       img: "/academics.webp",
       text: (
         <>
-          <p className="text-3xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
-            Exchange programs empower our students to understand and collaborate
-            with the world beyond the classroom.
+          <p className="text-2xl leading-normal font-medium text-black mb-4 md:mb-0 md:text-left text-center">
+            Brookfield is equipped with award-winning interactive software to
+            enhance student engagement in both online and in-class learning.
           </p>
         </>
       ),
@@ -65,7 +66,7 @@ export default function Highlights() {
               key={tab.title + i}
               onClick={() => setTabIdx(i)}
               className={
-                `w-1/3 py-6 not-last:mr-3 text-3xl font-medium outline-none transition-all duration-300` +
+                `w-1/3 py-6 not-last:mr-3 text-base sm:text-2xl font-medium outline-none transition-all duration-300` +
                 (tabIdx === i
                   ? " bg-[#61912c] text-white font-semibold"
                   : " bg-gray-200 hover:bg-gray-300 text-black font-medium")

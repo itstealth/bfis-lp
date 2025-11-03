@@ -28,7 +28,7 @@ export default function Header() {
           <img
             src="/logo_white.webp"
             alt="Brookfield International School"
-            className="w-auto h-16 select-none"
+            className="w-auto h-12 sm:h-16 select-none"
             draggable={false}
           />
         </div>
@@ -36,7 +36,7 @@ export default function Header() {
         {/* Right: Phone */}
         <a
           href="tel:+919066790662"
-          className="flex items-center gap-2 text-white text-xl sm:text-2xl font-medium"
+          className="flex items-center gap-2 text-white text-lg sm:text-2xl font-medium"
         >
           <Phone className="h-6 w-6" />
           <span>90667 90662</span>

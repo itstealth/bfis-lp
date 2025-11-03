@@ -18,7 +18,7 @@ export default function Curriculum() {
         {/* TODO: Replace with '/bfis-curriculum-mobile.png' when provided */}
         <div className="block md:hidden">
           <Image
-            src="/curriculum.png" // Placeholder, user will provide a mobile version
+            src="/curriculum-sm.png" // Placeholder, user will provide a mobile version
             alt="BFIS Curriculum for mobile"
             width={1920} // Using desktop width, this will be scaled down
             height={1080}

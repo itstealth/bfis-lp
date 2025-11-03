@@ -13,13 +13,13 @@ export default function Legacy() {
         </div>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex flex-col max-w-[600px] justify-center">
-            <h3 className="text-5xl font-bold text-zinc-800">
+            <h3 className="text-[28px] sm:text-5xl font-bold text-zinc-800">
               One Way. Our Methods. Our Difference.
             </h3>
-            <p className="mt-6 text-2xl sm:text-3xl text-black">
+            <p className="mt-6 text-2xl text-black">
               Holistic Education at BFIS
             </p>
-            <p className="mt-4 text-2xl sm:text-3xl text-black">
+            <p className="mt-4 text-2xl text-black">
               Adding that holistic perspective of the child as the core essence
               of our academic system, we provide a comprehensive learning
               experience through Academics, Events, Facilities, and more.
