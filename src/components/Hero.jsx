@@ -26,23 +26,23 @@ export default function Hero() {
             Best Learning Experience
           </h1>
           {/* Sub-headline Banner */}
-          <div className="mb-6">
-            <span className="inline-block text-center sm:text-left bg-[#acf15c] pl-3 pr-7 mr-5 sm:mr-0 py-1.5 text-black text-[21px] sm:text-[28px] font-semibold drop-shadow-sm tracking-wider">
+          <div className="mb-6 inline-flex flex-col gap-2 text-center sm:text-left bg-[#acf15c] pl-3 pr-7 mr-5 sm:mr-0 py-1.5 text-black text-[21px] sm:text-[28px] font-semibold drop-shadow-sm tracking-wider">
+            <span className="">
               Admissions Open for 2026-27
+            </span>
+            <span className="text-black font-extrabold text-3xl">
+              Pre-Nursery to Grade XII
             </span>
           </div>
 
           {/* Admissions Badge */}
-          <div className="flex flex-col gap-3 mb-6">
+          {/* <div className="flex flex-col gap-3 mb-6">
             <div className="">
-              {/* <span className="text-gray-900 font-bold text-2xl">
-                Academic Year:{" "}
-              </span> */}
               <span className="text-green-600 font-extrabold text-3xl">
                 Pre-Nursery to Grade XII
               </span>
             </div>
-          </div>
+          </div> */}
 
           {/* Bullet List */}
           {/* <ul className="space-y-3 text-lg sm:text-3xl text-white font-semibold mb-2">
