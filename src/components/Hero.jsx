@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative pt-16 sm:pt-0 min-h-screen w-full overflow-hidden flex items-center">
       {/* Mobile Background (below md) */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-center md:hidden"
+        className="absolute inset-0 bg-cover bg-[#cfd1d7] bg-no-repeat bg-center md:hidden"
         style={{ backgroundImage: "url(/Banner-sm.png)" }}
       />
       {/* Desktop Background (md and above) */}
@@ -14,41 +14,36 @@ export default function Hero() {
         style={{ backgroundImage: "url(/Hero-Banner.png)" }}
       />
       {/* Main Content Grid */}
-      <div className="relative w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between px-4 lg:px-12 py-8 lg:py-0 z-10">
+      <div
+        className="relative w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between pl-4 lg:pl-12 py-8 lg:py-0 z-10"
+        style={{ fontFamily: "var(--font-roboto-slab), sans-serif" }}
+      >
         {/* LEFT: Logo and Text */}
-        <div className="flex-1 flex flex-col md:mt-20 items-start max-w-[610px]">
-          {/* Admissions Badge */}
-          <div className="flex flex-col gap-3 mb-6">
-            <div className="inline-flex items-center gap-3 bg-linear-to-r from-green-600 to-green-500 px-6 py-3 rounded-full shadow-2xl border-2 border-white hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-              </span>
-              <span className="text-white font-extrabold text-xl sm:text-2xl uppercase tracking-wider drop-shadow-lg">
-                Admissions Open
-              </span>
-            </div>
-            <div className="bg-white/95 backdrop-blur-sm border-2 border-green-600 rounded-lg px-5 py-2.5 shadow-lg inline-block">
-              <span className="text-gray-900 font-bold text-lg sm:text-xl">
-                Academic Year:{" "}
-              </span>
-              <span className="text-green-600 font-extrabold text-xl sm:text-2xl">
-                2026-27
-              </span>
-            </div>
-          </div>
+        <div className="flex-1 flex flex-col md:mt-20 items-center sm:items-start max-w-[610px]">
           {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-[54px] font-extrabold text-black leading-[1.08] mb-4 drop-shadow-xl uppercase">
+          <h1 className="text-3xl text-center sm:text-left sm:text-4xl font-extrabold text-black leading-[1.08] mb-4 drop-shadow-xl capitalize">
             Give your child <br className="hidden sm:inline" />
-            Best Learning Experience at{" "}
+            Best Learning Experience
           </h1>
           {/* Sub-headline Banner */}
           <div className="mb-6">
-            <span className="inline-block bg-[#acf15c] pl-3 pr-7 py-1.5 text-black text-[30px] font-semibold drop-shadow-sm tracking-wider">
-              Brookfield International School
+            <span className="inline-block text-center sm:text-left bg-[#acf15c] pl-3 pr-7 mr-5 sm:mr-0 py-1.5 text-black text-[21px] sm:text-[28px] font-semibold drop-shadow-sm tracking-wider">
+              Admissions Open for 2026-27
             </span>
           </div>
-          
+
+          {/* Admissions Badge */}
+          <div className="flex flex-col gap-3 mb-6">
+            <div className="">
+              {/* <span className="text-gray-900 font-bold text-2xl">
+                Academic Year:{" "}
+              </span> */}
+              <span className="text-green-600 font-extrabold text-3xl">
+                Pre-Nursery to Grade XII
+              </span>
+            </div>
+          </div>
+
           {/* Bullet List */}
           {/* <ul className="space-y-3 text-lg sm:text-3xl text-white font-semibold mb-2">
             <li className="flex items-center gap-2">
@@ -70,7 +65,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT: Enquiry Form */}
-        <div className="flex-1 flex justify-center items-center w-full max-w-md lg:pl-8 mt-12 lg:mt-0">
+        <div className="flex-1 flex justify-center items-center w-full max-w-md lg:pl-8 mt-24 sm:mt-0">
           <form
             className="w-full bg-white/95 scale-90 shadow-xl rounded-[2rem] px-10 pt-8 pb-8 flex flex-col gap-5 min-w-[340px] max-w-[400px]"
             style={{ boxShadow: "0 4px 32px 0 rgba(28,31,39,0.13)" }}

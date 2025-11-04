@@ -17,7 +17,7 @@ export default function Header() {
     <header
       className={
         "w-full fixed top-0 left-0 right-0 z-[1000] transition-colors duration-300 " +
-        (scrolled ? "bg-black shadow-md" : "bg-transparent")
+        (scrolled ? "bg-black shadow-md" : "bg-black/50 sm:bg-transparent")
       }
     >
       <div className="mx-auto flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-10 max-w-[1400px]">
@@ -26,9 +26,7 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="Brookfield International School"
-            className={`w-auto h-12 block sm:h-16 select-none ${
-              scrolled ? "block" : "hidden"
-            }`}
+            className={`w-auto h-12 block sm:h-16 select-none block sm:hidden`}
             draggable={false}
           />
         </div>

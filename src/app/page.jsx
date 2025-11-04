@@ -16,11 +16,11 @@ export default function Home() {
       <Header />
       <Hero />
       <WhyChoose />
+      <Ranks />
       <HigherEducation />
       <Curriculum />
       <Why />
       <Legacy />
-      <Ranks />
       <Stats />
       <Highlights />
       <Contact />
