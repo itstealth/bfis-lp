@@ -4,29 +4,29 @@ import { useEffect, useState } from "react"
 
 const features = [
   {
-    title: "Personalized Education",
-    description: "Holistic development with individualized focus for every child.",
-    icon: "/why/1.png",
+    title: "Academic Achievements",
+    description: "Celebrating excellence with district topper achieving 99% marks from our school.",
+    icon: "/why/academic-success.png",
     gradient: "from-yellow-400 to-orange-500",
   },
   {
-    title: "Innovative Learning",
-    description: "Smart Classes integrating cutting-edge technology and virtual labs across all grades (Pre-Nursery to Class 12th).",
-    icon: "/why/2.png",
+    title: "Secure Transport Facility",
+    description: "CCTV and GPS-monitored buses ensuring safe and secure transportation for all students.",
+    icon: "/why/school-bus.png",
     gradient: "from-teal-400 to-cyan-500",
     bgColor: "bg-gradient-to-b from-teal-500 to-green-500",
     isFeatured: true,
   },
   {
-    title: "Co-Curricular Excellence",
-    description: "15+ Sports Activities and 10+ Cultural Events, supported by dedicated facilities.",
-    icon: "/why/3.png",
+    title: "Medical Facility",
+    description: "Full-time on-campus medical facility providing immediate healthcare support and peace of mind.",
+    icon: "/why/hospital-facility.png",
     gradient: "from-red-400 to-orange-500",
   },
   {
-    title: "World-Class Facilities",
-    description: "State-of-the-art campus, 6 Advanced Science Labs, and a modern library with 20,000+ books.",
-    icon: "/why/4.png",
+    title: "International Faculties",
+    description: "Experienced international educators bringing global perspectives and world-class teaching methodologies.",
+    icon: "/why/virtual-class.png",
     gradient: "from-blue-400 to-cyan-400",
   },
   {

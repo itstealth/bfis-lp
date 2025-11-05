@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,16 +32,22 @@ export default function Header() {
           />
         </div>
 
-        {/* Right: Phone */}
-        <a
-          href="tel:+919066790662"
-          className={`flex items-center gap-2 text-lg font-medium ${
-            scrolled ? "text-white" : "text-black"
-          }`}
-        >
-          <Phone className="h-5 w-5" />
-          <span>90667 90662</span>
-        </a>
+        <div className="flex items-center gap-6">
+          <a href="#hero">
+            <Button className={`${scrolled ? "bg-[#acf15c] text-black hover:bg-[abf15cc3]" : "bg-black text-white hover:bg-black/80"} font-bold shadow-lg hidden sm:block`}>Book Your Campus Tour</Button>
+          </a>
+
+          {/* Right: Phone */}
+          <a
+            href="tel:+919066790662"
+            className={`flex items-center gap-2 text-lg font-medium ${
+              scrolled ? "text-white" : "text-black"
+            }`}
+          >
+            <Phone className="h-5 w-5" />
+            <span>90667 90662</span>
+          </a>
+        </div>
       </div>
     </header>
   );

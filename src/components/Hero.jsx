@@ -2,7 +2,7 @@ import { CheckCircle } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-16 sm:pt-0 min-h-screen w-full overflow-hidden flex items-center">
+    <section id="hero" className="relative pt-16 sm:pt-0 min-h-screen w-full overflow-hidden flex items-center">
       {/* Mobile Background (below md) */}
       <div
         className="absolute inset-0 bg-cover bg-[#cfd1d7] bg-no-repeat bg-center md:hidden"

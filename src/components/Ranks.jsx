@@ -23,17 +23,19 @@ export default function Ranks() {
             />
 
             <p className="mt-8 max-w-2xl sm:text-lg text-base leading-8 text-zinc-700">
-              Brookfield set a world record with its virtual Enviro Tiger Fest 2020 and
-              was awarded a certificate by World Book of Records, United Kingdom.
+              Brookfield set a world record with its virtual Enviro Tiger Fest
+              2020 and was awarded a certificate by World Book of Records,
+              United Kingdom.
             </p>
           </div>
 
           {/* Right: Rank + Times of India */}
           <div className="flex flex-col items-center text-center md:text-left md:items-start">
             <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-zinc-900">
-              Brookfield International School
-              <br className="hidden sm:block" />
-              <span className="font-semibold"> has marked its</span>
+              Brookfield has been ranked 1st in emerging
+              <br className="hidden" />
+              <span className="font-semibold"> school Chandigarh
+              tricity by Times of India</span>
             </h2>
 
             <div className="mt-8 flex flex-col gap-6">

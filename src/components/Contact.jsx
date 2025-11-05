@@ -1,6 +1,16 @@
+"use client";
 import { MapPin, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
+
+  const scrollToForm = () => {
+    const heroSection = document.getElementById("hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section className="w-full bg-[#0c0c0c] py-5">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
@@ -42,6 +52,14 @@ export default function Contact() {
               >
                 +91 90667 90662
               </a>
+            </li>
+            <li className="flex sm:hidden items-start gap-4">
+              <Button
+                onClick={scrollToForm}
+                className="bg-[#acf15c] text-black hover:bg-[#abf15cc3] font-bold shadow-lg px-6 py-3 text-base transition-all duration-300 hover:scale-105"
+              >
+                Book Your Campus Tour
+              </Button>
             </li>
           </ul>
         </div>
