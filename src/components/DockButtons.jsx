@@ -27,7 +27,9 @@ export function DockButtons() {
 
   return (
     <div
-      className={`fixed bottom-5 sm:bottom-8 left-[50%] translate-x-[-50%] z-50 md:transition-opacity md:duration-300 block sm:hidden`}
+      className={`fixed bottom-5 sm:bottom-8 left-[50%] translate-x-[-50%] z-50 md:transition-opacity md:duration-300 block ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
     >
       <Dock className="bg-black/50 h-full">
         <DockIcon
