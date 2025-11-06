@@ -26,9 +26,7 @@ const TABS = [
         <>
           <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
             {/* Replace this content with the actual "Award-Winning" description */}
-            Rated as the top emerging school in the tri-city by Times School
-            Survey in 2020 & 2021, and holder of a world record with World Book
-            of Records, UK.
+            Brookfield International School has been awarded the Best Infrastructure School of the year at the prestigious Education Conclave - Schools of Excellence from Sh. Harjot Singh Bains, Education Minister of Punjab
           </p>
         </>
       ),

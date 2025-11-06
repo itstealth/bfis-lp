@@ -21,12 +21,12 @@ export default function Hero() {
         {/* LEFT: Logo and Text */}
         <div className="flex-1 flex flex-col md:mt-20 items-center sm:items-start max-w-[610px]">
           {/* Headline */}
-          <h1 className="text-3xl text-center sm:text-left sm:text-4xl font-extrabold text-black leading-[1.08] mb-4 drop-shadow-xl capitalize">
+          <h1 className="text-3xl opacity-0 text-center sm:text-left sm:text-4xl font-extrabold text-black leading-[1.08] mb-4 drop-shadow-xl capitalize">
             Give your child <br className="hidden sm:inline" />
             Best Learning Experience
           </h1>
           {/* Sub-headline Banner */}
-          <div className="mb-6 inline-flex flex-col gap-2 text-center sm:text-left bg-[#acf15c] pl-3 pr-7 mr-5 sm:mr-0 py-1.5 text-black text-[21px] sm:text-[28px] font-semibold drop-shadow-sm tracking-wider">
+          <div className="mb-6 opacity-0 inline-flex flex-col gap-2 text-center sm:text-left bg-[#acf15c] pl-3 pr-7 mr-5 sm:mr-0 py-1.5 text-black text-[21px] sm:text-[28px] font-semibold drop-shadow-sm tracking-wider">
             <span className="">
               Admissions Open for 2026-27
             </span>
@@ -67,12 +67,15 @@ export default function Hero() {
         {/* RIGHT: Enquiry Form */}
         <div className="flex-1 flex justify-center items-center w-full max-w-md lg:pl-8 mt-24 sm:mt-0">
           <form
-            className="w-full bg-white/95 scale-90 shadow-xl rounded-[2rem] px-10 pt-8 pb-8 flex flex-col gap-5 min-w-[340px] max-w-[400px]"
+            className="w-full bg-white/95 scale-90 shadow-xl rounded-[2rem] px-10 pt-8 pb-8 flex flex-col gap-4 min-w-[340px] max-w-[400px]"
             style={{ boxShadow: "0 4px 32px 0 rgba(28,31,39,0.13)" }}
           >
-            <h3 className="text-2xl font-medium text-center text-[#18181b] mb-2">
-              Enquire Now
+            <h3 className="text-xl font-medium text-center text-[#18181b]">
+              Admissions Open for 2026
             </h3>
+            <h4 className="text-xl font-medium text-center text-[#18181b] mb-2">
+              Pre-Nursery - Grade XII
+            </h4>
             <input
               type="text"
               placeholder="Parent's Name"

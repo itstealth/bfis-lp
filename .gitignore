@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# zoho tokens (sensitive data)
+.zoho-tokens.json
+
 # vercel
 .vercel
 
