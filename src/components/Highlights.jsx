@@ -6,7 +6,7 @@ const TABS = [
   {
     title: "Global Exposure",
     content: {
-      img: "/academics.webp", // placeholder path, update to your real image path
+      img: "/academics.jpg", // placeholder path, update to your real image path
       text: (
         <>
           <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
@@ -82,7 +82,7 @@ export default function Highlights() {
             <img
               src={TABS[tabIdx].content.img}
               alt="Highlight visual"
-              className="w-full h-[340px] md:h-[350px] object-cover object-center transform transition-all duration-300 hover:scale-105 shadow"
+              className="w-full md:w-[500px] mx-auto h-[340px] md:h-[500px] object-cover object-center transform transition-all duration-300 hover:scale-105 shadow"
               style={{ minWidth: 280 }}
             />
           </div>
