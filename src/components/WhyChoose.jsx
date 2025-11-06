@@ -8,9 +8,41 @@ import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Updated SLIDES array with YouTube video IDs
 const SLIDES = [
-  { id: 1, videoId: "WVk8IWX0JT4", alt: "Campus Video" },
-  { id: 2, videoId: "oBTVCILwfTU", alt: "Library Video" },
-  { id: 3, videoId: "bpzcyAoUaUg", alt: "Outdoors Video" },
+  {
+    id: 1,
+    videoId: "WVk8IWX0JT4",
+    alt: "Campus Video",
+    description:
+      "Parents who trust BFIS Kindergarten for their child's foundational learning and growth",
+  },
+  {
+    id: 2,
+    videoId: "oBTVCILwfTU",
+    alt: "Library Video",
+    description:
+      "Parent Satisfaction for a child's academic growth and performance is an essential part of BFIS.",
+  },
+  {
+    id: 3,
+    videoId: "bpzcyAoUaUg",
+    alt: "Outdoors Video",
+    description:
+      "Our unique learning process let students dive into a diverse set of stimulating academic, cultural, and co-scholastic programmes.",
+  },
+  {
+    id: 4,
+    videoId: "02B4q-0vLWs",
+    alt: "Smart Class Video",
+    description:
+      "Our dedicated school infirmary doctor ensures the health and fitness of our students.",
+  },
+  {
+    id: 5,
+    videoId: "kGOOf9Y6EBs",
+    alt: "Smart Class Video",
+    description:
+      "How teachers help students to unlock their true potential and encourages them to discover their unique talent.",
+  },
 ];
 
 function mod(n, m) {
@@ -29,7 +61,7 @@ export default function WhyChoose() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -153,7 +185,11 @@ export default function WhyChoose() {
                     onClick={() => handleCardClick(item.videoId)}
                   >
                     <div className="relative w-full h-full">
-                      <YouTubeThumbnail videoId={item.videoId} alt={item.alt} priority={isCenter} />
+                      <YouTubeThumbnail
+                        videoId={item.videoId}
+                        alt={item.alt}
+                        priority={isCenter}
+                      />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                         <Button
                           variant="default"
@@ -163,6 +199,15 @@ export default function WhyChoose() {
                         >
                           <Play className="h-7 w-7 fill-white" />
                         </Button>
+                      </div>
+                      {/* Caption overlay with enhanced styling */}
+                      <div className="absolute bottom-0 left-0 right-0 rounded-b-3xl overflow-hidden">
+                        <div className="relative px-5 py-4 md:px-8 md:py-6 bg-gradient-to-t from-black/90 via-black/75 to-black/50 backdrop-blur-md">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent pointer-events-none"></div>
+                          <p className="relative text-white text-sm sm:text-base md:text-lg font-semibold leading-relaxed md:leading-relaxed text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -223,7 +268,9 @@ function YouTubeThumbnail({ videoId, alt, priority = false }) {
       alt={alt}
       fill
       priority={priority}
-      onError={() => setIdx((prev) => (prev < candidates.length - 1 ? prev + 1 : prev))}
+      onError={() =>
+        setIdx((prev) => (prev < candidates.length - 1 ? prev + 1 : prev))
+      }
       className="object-cover object-center w-full h-full select-none rounded-3xl"
     />
   );
