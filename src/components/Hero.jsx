@@ -72,18 +72,18 @@ export default function Hero() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thank you! Your enquiry has been submitted successfully.",
-        });
-        // Reset form
-        setFormData({
-          parentName: "",
-          studentName: "",
-          email: "",
-          phone: "",
-          classApplyingFor: "",
-        });
+        // Build URL with parent and student names for personalization
+        const params = new URLSearchParams();
+        if (formData.parentName) {
+          params.append('parentName', formData.parentName);
+        }
+        if (formData.studentName) {
+          params.append('studentName', formData.studentName);
+        }
+        
+        // Redirect to thank-you.html page
+        const thankYouUrl = `/thank-you.html${params.toString() ? '?' + params.toString() : ''}`;
+        window.location.href = thankYouUrl;
       } else {
         setSubmitStatus({
           type: "error",

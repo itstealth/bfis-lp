@@ -4,6 +4,7 @@ import DockButtons from "@/components/DockButtons";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CampusTourButton from "@/components/CampusTourButton";
 import CallButton from "@/components/CallButton";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,6 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-KRDJLKL" />
       <body
         className={`${poppins.variable} ${robotoSlab.variable} font-sans antialiased`}
         style={{ fontFamily: "var(--font-poppins), sans-serif" }}

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You - Brookfield International School</title>
+    <!-- Google Tag Manager -->
+
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KRDJLKL");
+    </script>
+
+    <!-- End Google Tag Manager -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #111827;
+      }
+
+      .thank-you-section {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Mobile Background */
+      .bg-mobile {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-color: #cfd1d7;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("/Banner-sm.png");
+      }
+
+      /* Desktop Background */
+      .bg-desktop {
+        display: none;
+      }
+
+      @media (min-width: 768px) {
+        .bg-mobile {
+          display: none;
+        }
+        .bg-desktop {
+          display: block;
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-image: url("/Hero-Banner.png");
+        }
+      }
+
+      /* Dark overlay */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      @media (min-width: 768px) {
+        .overlay {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      /* Main Content */
+      .content-wrapper {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1rem;
+        max-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      @media (min-width: 640px) {
+        .content-wrapper {
+          padding: 1.5rem;
+          max-width: 48rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .content-wrapper {
+          padding: 2rem;
+          max-width: 52rem;
+        }
+      }
+
+      .content-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(4px);
+        border-radius: 1.25rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .content-card {
+          padding: 1.25rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .content-card {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Success Icon */
+      .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .icon-container {
+        position: relative;
+      }
+
+      .icon-glow {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(34, 197, 94, 0.2);
+        border-radius: 50%;
+        filter: blur(12px);
+      }
+
+      .icon-circle {
+        position: relative;
+        background-color: #22c55e;
+        border-radius: 50%;
+        padding: 0.75rem;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media (min-width: 768px) {
+        .icon-circle {
+          width: 3.5rem;
+          height: 3.5rem;
+          padding: 0.875rem;
+        }
+      }
+
+      .check-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: white;
+      }
+
+      @media (min-width: 768px) {
+        .check-icon {
+          width: 1.75rem;
+          height: 1.75rem;
+        }
+      }
+
+      /* Main Heading */
+      .main-heading {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #111827;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+
+      @media (min-width: 640px) {
+        .main-heading {
+          font-size: 1.75rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .main-heading {
+          font-size: 2rem;
+          margin-bottom: 0.75rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .main-heading {
+          font-size: 2.25rem;
+        }
+      }
+
+      /* Divider */
+      .divider {
+        width: 4rem;
+        height: 0.2rem;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #acf15c,
+          transparent
+        );
+        margin: 0 auto 0.75rem;
+      }
+
+      @media (min-width: 768px) {
+        .divider {
+          margin-bottom: 1rem;
+        }
+      }
+
+      /* Subtitle */
+      .subtitle {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+
+      @media (min-width: 640px) {
+        .subtitle {
+          font-size: 1rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .subtitle {
+          font-size: 1.125rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      /* Student Name Highlight */
+      .student-highlight {
+        display: inline-block;
+        background-color: rgba(172, 241, 92, 0.2);
+        border: 2px solid #acf15c;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      @media (min-width: 768px) {
+        .student-highlight {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .student-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #1f2937;
+        line-height: 1.4;
+      }
+
+      @media (min-width: 640px) {
+        .student-text {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .student-text {
+          font-size: 1rem;
+        }
+      }
+
+      .student-name {
+        font-weight: 600;
+      }
+
+      /* Information Box */
+      .info-box {
+        background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+      }
+
+      @media (min-width: 768px) {
+        .info-box {
+          padding: 1.25rem;
+          margin-bottom: 1.25rem;
+        }
+      }
+
+      .info-heading {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+
+      @media (min-width: 640px) {
+        .info-heading {
+          font-size: 1.125rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .info-heading {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: left;
+        max-width: 42rem;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 768px) {
+        .info-list {
+          gap: 0.75rem;
+        }
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .info-item {
+          gap: 0.75rem;
+        }
+      }
+
+      .info-number {
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background-color: #acf15c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.125rem;
+      }
+
+      @media (min-width: 768px) {
+        .info-number {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+
+      .info-number-text {
+        color: #111827;
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+
+      @media (min-width: 768px) {
+        .info-number-text {
+          font-size: 0.875rem;
+        }
+      }
+
+      .info-text {
+        font-size: 0.875rem;
+        color: #374151;
+        flex: 1;
+        line-height: 1.4;
+      }
+
+      @media (min-width: 640px) {
+        .info-text {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .info-text {
+          font-size: 1rem;
+        }
+      }
+
+      .info-text-bold {
+        font-weight: 600;
+        color: #111827;
+      }
+
+      /* Contact Box */
+      .contact-box {
+        background-color: white;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+      }
+
+      @media (min-width: 768px) {
+        .contact-box {
+          padding: 1.25rem;
+          margin-bottom: 1.25rem;
+        }
+      }
+
+      .contact-text {
+        font-size: 0.875rem;
+        color: #374151;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+
+      @media (min-width: 640px) {
+        .contact-text {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .contact-text {
+          font-size: 1rem;
+        }
+      }
+
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+      }
+
+      @media (min-width: 640px) {
+        .contact-links {
+          flex-direction: row;
+          gap: 1rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .contact-links {
+          gap: 1.5rem;
+        }
+      }
+
+      .contact-link {
+        color: #acf15c;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      @media (min-width: 768px) {
+        .contact-link {
+          font-size: 1rem;
+        }
+      }
+
+      .contact-link:hover {
+        color: #8dd14a;
+      }
+
+      .contact-separator {
+        display: none;
+        color: #d1d5db;
+      }
+
+      @media (min-width: 640px) {
+        .contact-separator {
+          display: inline;
+        }
+      }
+
+      /* Back Button */
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        background-color: #111827;
+        color: white;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        font-size: 0.875rem;
+      }
+
+      @media (min-width: 768px) {
+        .back-button {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.95rem;
+        }
+      }
+
+      .back-button:hover {
+        background-color: #1f2937;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .back-icon {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .back-icon {
+          width: 1.125rem;
+          height: 1.125rem;
+        }
+      }
+
+      /* Hidden class for conditional display */
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KRDJLKL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+
+    <!-- End Google Tag Manager (noscript) -->
+     
+    <section class="thank-you-section">
+      <!-- Mobile Background -->
+      <div class="bg-mobile"></div>
+
+      <!-- Desktop Background -->
+      <div class="bg-desktop"></div>
+
+      <!-- Dark overlay for better text visibility -->
+      <div class="overlay"></div>
+
+      <!-- Main Content -->
+      <div class="content-wrapper">
+        <div class="content-card">
+          <!-- Success Icon -->
+          <div class="icon-wrapper">
+            <div class="icon-container">
+              <div class="icon-glow"></div>
+              <div class="icon-circle">
+                <svg
+                  class="check-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Thank You Message -->
+          <h1 class="main-heading" id="thankYouHeading">Thank You!</h1>
+
+          <div class="divider"></div>
+
+          <!-- Subtitle -->
+          <p class="subtitle">Your enquiry has been submitted successfully!</p>
+
+          <!-- Student Name Highlight -->
+          <div class="student-highlight hidden" id="studentHighlight">
+            <p class="student-text">
+              <span class="student-name" id="studentName"></span> - We're
+              excited to welcome you to BFIS!
+            </p>
+          </div>
+
+          <!-- Information Box -->
+          <div class="info-box">
+            <h2 class="info-heading">What's Next?</h2>
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-number">
+                  <span class="info-number-text">1</span>
+                </div>
+                <p class="info-text">
+                  Our admissions team will review your enquiry and contact you
+                  within <span class="info-text-bold">24-48 hours</span>.
+                </p>
+              </div>
+              <div class="info-item">
+                <div class="info-number">
+                  <span class="info-number-text">2</span>
+                </div>
+                <p class="info-text">
+                  We'll provide you with detailed information about our
+                  admission process, campus tour, and answer any questions you
+                  may have.
+                </p>
+              </div>
+              <div class="info-item">
+                <div class="info-number">
+                  <span class="info-number-text">3</span>
+                </div>
+                <p class="info-text">
+                  Get ready to embark on an exceptional educational journey with
+                  <span class="info-text-bold"
+                    >Brookfield International School</span
+                  >!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="contact-box">
+            <p class="contact-text">
+              Have questions? Feel free to reach out to us:
+            </p>
+            <div class="contact-links">
+              <a href="tel:+911234567890" class="contact-link"> 📞 Call Us </a>
+              <span class="contact-separator">|</span>
+              <a href="mailto:admissions@bfis.edu" class="contact-link">
+                ✉️ Email Us
+              </a>
+            </div>
+          </div>
+
+          <!-- Back Button -->
+          <button class="back-button" onclick="goBack()">
+            <svg
+              class="back-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              ></path>
+            </svg>
+            <span>Back to Home</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Get URL parameters for personalization
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Personalize the page with URL parameters
+      function personalizePage() {
+        var parentName = getUrlParameter("parentName");
+        var studentName = getUrlParameter("studentName");
+
+        // Update heading with parent's first name
+        if (parentName) {
+          var firstName = parentName.split(" ")[0];
+          document.getElementById("thankYouHeading").textContent =
+            "Thank You, " + firstName + "!";
+        }
+
+        // Show and update student name highlight
+        if (studentName) {
+          document.getElementById("studentName").textContent = studentName;
+          document
+            .getElementById("studentHighlight")
+            .classList.remove("hidden");
+        }
+      }
+
+      // Back button function
+      function goBack() {
+        // Try to go back in history, otherwise redirect to home
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "/#hero";
+        }
+      }
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", function () {
+        personalizePage();
+
+        // Track conversion (add your tracking code here)
+        // Example: Google Analytics
+        if (typeof gtag !== "undefined") {
+          gtag("event", "conversion", {
+            send_to: "AW-CONVERSION_ID/CONVERSION_LABEL",
+            value: 1.0,
+            currency: "USD",
+          });
+        }
+
+        // Example: Facebook Pixel
+        if (typeof fbq !== "undefined") {
+          fbq("track", "Lead");
+        }
+      });
+    </script>
+  </body>
+</html>
