@@ -1,6 +1,70 @@
+"use client";
+
 import { CheckCircle } from "lucide-react";
+import { useState } from "react";
 
 export default function Hero() {
+  const [formData, setFormData] = useState({
+    parentName: "",
+    studentName: "",
+    email: "",
+    phone: "",
+    classApplyingFor: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! Your enquiry has been submitted successfully.",
+        });
+        // Reset form
+        setFormData({
+          parentName: "",
+          studentName: "",
+          email: "",
+          phone: "",
+          classApplyingFor: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "Failed to submit form. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="hero" className="relative pt-16 sm:pt-0 min-h-screen w-full overflow-hidden flex items-center">
       {/* Mobile Background (below md) */}
@@ -67,6 +131,7 @@ export default function Hero() {
         {/* RIGHT: Enquiry Form */}
         <div className="flex-1 flex justify-center items-center w-full max-w-md lg:pl-8 mt-24 sm:mt-0">
           <form
+            onSubmit={handleSubmit}
             className="w-full bg-white/95 scale-90 shadow-xl rounded-[2rem] px-10 pt-8 pb-8 flex flex-col gap-4 min-w-[340px] max-w-[400px]"
             style={{ boxShadow: "0 4px 32px 0 rgba(28,31,39,0.13)" }}
           >
@@ -76,35 +141,67 @@ export default function Hero() {
             <h4 className="text-xl font-medium text-center text-[#18181b] mb-2">
               Pre-Nursery - Grade XII
             </h4>
+
+            {/* Status Messages */}
+            {submitStatus && (
+              <div
+                className={`px-4 py-3 rounded-md text-sm ${
+                  submitStatus.type === "success"
+                    ? "bg-green-100 text-green-800 border border-green-200"
+                    : "bg-red-100 text-red-800 border border-red-200"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <input
               type="text"
+              name="parentName"
+              value={formData.parentName}
+              onChange={handleChange}
               placeholder="Parent's Name"
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
+              disabled={isSubmitting}
             />
             <input
               type="text"
+              name="studentName"
+              value={formData.studentName}
+              onChange={handleChange}
               placeholder="Student's Name"
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
+              disabled={isSubmitting}
             />
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Email"
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
+              disabled={isSubmitting}
             />
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Phone"
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
               required
+              disabled={isSubmitting}
             />
             <select
-              name="class"
+              name="classApplyingFor"
+              value={formData.classApplyingFor}
+              onChange={handleChange}
               className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base bg-white cursor-pointer"
               required
-              defaultValue=""
+              disabled={isSubmitting}
             >
               <option value="" disabled>
                 Class Applying For
@@ -128,9 +225,14 @@ export default function Hero() {
             </select>
             <button
               type="submit"
-              className="w-full py-3 rounded-md bg-[#acf15c] text-black text-lg font-semibold mt-2 hover:bg-[#abf15cc3] transition"
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-md bg-[#acf15c] text-black text-lg font-semibold mt-2 transition ${
+                isSubmitting
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-[#abf15cc3]"
+              }`}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>

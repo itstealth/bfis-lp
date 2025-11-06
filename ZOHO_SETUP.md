@@ -1,3 +1,25 @@
+# ⚠️ DEPRECATED - See New Documentation
+
+**This file is deprecated. Please refer to the new documentation:**
+
+- **Quick Start**: `QUICK_START.md` - Fast setup instructions
+- **Complete Guide**: `ZOHO_INTEGRATION.md` - Detailed integration guide
+- **Summary**: `SETUP_SUMMARY.md` - Overview of what was created
+
+---
+
+## What's New in the Updated Integration?
+
+✅ **Automatic Token Management** - No manual token copying needed  
+✅ **Auto Token Refresh** - Tokens refresh automatically when expired  
+✅ **File-Based Storage** - Tokens stored in `zoho-tokens.json`  
+✅ **Better Error Handling** - Improved error messages and logging  
+✅ **One-Click Auth** - Single visit to `/api/zoho-auth` sets everything up  
+
+---
+
+# OLD DOCUMENTATION (For Reference Only)
+
 # Zoho CRM Integration Setup Guide
 
 This guide will help you set up the Zoho CRM integration for capturing leads from the enquiry form.

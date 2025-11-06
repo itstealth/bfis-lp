@@ -34,7 +34,7 @@ yarn-error.log*
 .env*
 
 # zoho tokens (sensitive data)
-.zoho-tokens.json
+zoho-tokens.json
 
 # vercel
 .vercel
