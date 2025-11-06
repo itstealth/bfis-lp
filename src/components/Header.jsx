@@ -14,6 +14,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+
   return (
     <header
       className={
@@ -40,7 +41,7 @@ export default function Header() {
           {/* Right: Phone */}
           <a
             href="tel:+919066790662"
-            className={`flex items-center gap-2 text-lg font-medium ${
+            className={`flex items-center gap-2 sm:text-lg text-base font-medium ${
               scrolled ? "text-white" : "text-black"
             }`}
           >

@@ -25,31 +25,42 @@ export function DockButtons() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToForm = () => {
+    const heroSection = document.getElementById("hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div
-      className={`fixed bottom-5 sm:bottom-8 left-[50%] translate-x-[-50%] z-50 md:transition-opacity md:duration-300 block ${
+      className={`fixed sm:hidden bottom-5 sm:bottom-8 left-[50%] translate-x-[-50%] z-50 md:transition-opacity md:duration-300 block ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
       <Dock className="bg-black/50 h-full">
-        <DockIcon
-          size="full"
-          className="animate-pulse"
-        >
-          <Link href="/BFIS Brochure.pdf" target="_blank">
-            <Button className="bg-[#acf15c] text-black hover:bg-[abf15cc3]">
-              Download Brochure
-            </Button>
-          </Link>
+        <DockIcon size="full" className="animate-pulse">
+          {/* <Link href="/BFIS Brochure.pdf" target="_blank"> */}
+          <Button
+            onClick={scrollToForm}
+            className="bg-[#acf15c] text-black hover:bg-[abf15cc3]"
+          >
+            Download Brochure
+          </Button>
+          {/* </Link> */}
         </DockIcon>
         {/* <DockIcon className="bg-black/10 dark:bg-white/10">
           <Icons.hamburger className="size-full" />
         </DockIcon> */}
-        {/* <DockIcon size="48" className="bg-black/10 dark:bg-white/10">
-          <Link href="tel:+919391114948" target="_blank" rel="noopener noreferrer">
+        <DockIcon size="48" className="bg-black/10 dark:bg-white/10">
+          <Link
+            href="tel:+919066790662"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src="/call-now.png" alt="phone" width={36} height={36} />
           </Link>
-        </DockIcon> */}
+        </DockIcon>
 
         <DockIcon size="48" className="bg-black/10 dark:bg-white/10">
           <Icons.whatsapp className="size-9 sm:size-full" />

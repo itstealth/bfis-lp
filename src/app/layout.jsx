@@ -3,6 +3,7 @@ import "./globals.css";
 import DockButtons from "@/components/DockButtons";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CampusTourButton from "@/components/CampusTourButton";
+import CallButton from "@/components/CallButton";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         style={{ fontFamily: "var(--font-poppins), sans-serif" }}
       >
         {children}
+        {/* <CallButton /> */}
         <WhatsAppButton />
         <CampusTourButton />
         <DockButtons />
