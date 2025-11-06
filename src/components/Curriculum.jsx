@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Curriculum() {
   return (
-    <section className="py-5">
+    <section className="py-5 bg-[#fbfaf3]">
       <div className="container mx-auto px-4">
         {/* Desktop Image */}
         <div className="hidden md:block">

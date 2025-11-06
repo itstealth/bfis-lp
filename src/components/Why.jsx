@@ -6,13 +6,13 @@ const features = [
   {
     title: "Academic Achievements",
     description: "Celebrating excellence with district topper achieving 99% marks from our school.",
-    icon: "/why/academic-success.png",
+    icon: "/why/1.png",
     gradient: "from-yellow-400 to-orange-500",
   },
   {
     title: "Secure Transport Facility",
     description: "CCTV and GPS-monitored buses ensuring safe and secure transportation for all students.",
-    icon: "/why/school-bus.png",
+    icon: "/why/2.png",
     gradient: "from-teal-400 to-cyan-500",
     bgColor: "bg-gradient-to-b from-teal-500 to-green-500",
     isFeatured: true,
@@ -20,13 +20,13 @@ const features = [
   {
     title: "Medical Facility",
     description: "Full-time on-campus medical facility providing immediate healthcare support and peace of mind.",
-    icon: "/why/hospital-facility.png",
+    icon: "/why/3.png",
     gradient: "from-red-400 to-orange-500",
   },
   {
     title: "International Faculties",
     description: "Experienced international educators bringing global perspectives and world-class teaching methodologies.",
-    icon: "/why/virtual-class.png",
+    icon: "/why/4.png",
     gradient: "from-blue-400 to-cyan-400",
   },
   {
