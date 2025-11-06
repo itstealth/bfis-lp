@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -21,7 +21,19 @@ export default function WhyChoose() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const slideCount = SLIDES.length;
+
+  // Detect mobile screen size (md breakpoint is 768px in Tailwind)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleCardClick = (videoId) => {
     setCurrentVideoId(videoId);
@@ -55,19 +67,21 @@ export default function WhyChoose() {
       offset === 1 ||
       (slideCount > 2 && offset === -(slideCount - 1))
     ) {
+      // On mobile, hide side cards; on desktop, show them with 3D effect
       style = {
-        opacity: 1,
+        opacity: isMobile ? 0 : 1,
         zIndex: 10,
-        pointerEvents: "auto",
+        pointerEvents: isMobile ? "none" : "auto",
         transform:
           "translateX(60%) scale(.96) translateZ(-180px) rotateY(-24deg)",
         boxShadow: "0 5px 20px 0 rgba(0,0,0,.1)",
       };
     } else if (offset === slideCount - 1 || (slideCount > 2 && offset === -1)) {
+      // On mobile, hide side cards; on desktop, show them with 3D effect
       style = {
-        opacity: 1,
+        opacity: isMobile ? 0 : 1,
         zIndex: 10,
-        pointerEvents: "auto",
+        pointerEvents: isMobile ? "none" : "auto",
         transform:
           "translateX(-60%) scale(.96) translateZ(-180px) rotateY(24deg)",
         boxShadow: "0 5px 20px 0 rgba(0,0,0,.1)",
