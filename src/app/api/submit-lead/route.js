@@ -9,7 +9,18 @@ export async function POST(request) {
   try {
     // Parse form data
     const body = await request.json();
-    const { parentName, studentName, email, phone, classApplyingFor } = body;
+    const { 
+      parentName, 
+      studentName, 
+      email, 
+      phone, 
+      classApplyingFor,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content
+    } = body;
 
     // Validate required fields
     if (!parentName || !email || !phone) {
@@ -17,6 +28,17 @@ export async function POST(request) {
         { error: 'Missing required fields' },
         { status: 400 }
       );
+    }
+
+    // Log UTM parameters if present
+    if (utm_source || utm_medium || utm_campaign) {
+      console.log('📊 UTM Parameters received:', {
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content
+      });
     }
 
     // Get valid access token (will auto-refresh if expired)
@@ -39,6 +61,19 @@ export async function POST(request) {
       );
     }
 
+    // Build description with all relevant information
+    let description = `Student Name: ${studentName || 'Not provided'}\nClass Applying For: ${classApplyingFor || 'Not specified'}`;
+    
+    // Add UTM parameters to description if available
+    if (utm_source || utm_medium || utm_campaign || utm_term || utm_content) {
+      description += '\n\n--- Campaign Tracking ---';
+      if (utm_source) description += `\nSource: ${utm_source}`;
+      if (utm_medium) description += `\nMedium: ${utm_medium}`;
+      if (utm_campaign) description += `\nCampaign: ${utm_campaign}`;
+      if (utm_term) description += `\nTerm: ${utm_term}`;
+      if (utm_content) description += `\nContent: ${utm_content}`;
+    }
+
     // Prepare lead data for Zoho CRM
     const leadData = {
       data: [
@@ -47,9 +82,14 @@ export async function POST(request) {
           Company: 'BFIS Admission', // Required field in Zoho
           Email: email,
           Phone: phone,
-          Lead_Source: 'Website - Admission Form',
-          Description: `Student Name: ${studentName || 'Not provided'}\nClass Applying For: ${classApplyingFor || 'Not specified'}`,
-          // Custom fields (uncomment and adjust if you have these in your CRM)
+          Lead_Source: utm_source || 'Website - Admission Form', // Use UTM source if available
+          Description: description,
+          // Custom fields for UTM parameters (uncomment if you have these custom fields in Zoho CRM)
+          // UTM_Source: utm_source,
+          // UTM_Medium: utm_medium,
+          // UTM_Campaign: utm_campaign,
+          // UTM_Term: utm_term,
+          // UTM_Content: utm_content,
           // Student_Name: studentName,
           // Class_Applying_For: classApplyingFor,
         }

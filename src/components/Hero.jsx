@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [formData, setFormData] = useState({
@@ -11,8 +11,36 @@ export default function Hero() {
     phone: "",
     classApplyingFor: "",
   });
+  const [utmParams, setUtmParams] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Capture UTM parameters from URL on component mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      const capturedUtmParams = {
+        utm_source: urlParams.get("utm_source") || "",
+        utm_medium: urlParams.get("utm_medium") || "",
+        utm_campaign: urlParams.get("utm_campaign") || "",
+        utm_term: urlParams.get("utm_term") || "",
+        utm_content: urlParams.get("utm_content") || "",
+      };
+
+      // Only update if at least one UTM parameter exists
+      if (Object.values(capturedUtmParams).some(value => value !== "")) {
+        setUtmParams(capturedUtmParams);
+        console.log("📊 UTM Parameters captured:", capturedUtmParams);
+      }
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,12 +53,20 @@ export default function Hero() {
     setSubmitStatus(null);
 
     try {
+      // Combine form data with UTM parameters
+      const submissionData = {
+        ...formData,
+        ...utmParams,
+      };
+
+      console.log("📤 Submitting lead with UTM data:", submissionData);
+
       const response = await fetch("/api/submit-lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       const data = await response.json();
