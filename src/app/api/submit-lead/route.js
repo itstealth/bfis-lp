@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getValidAccessToken } from '@/lib/zoho-token-manager';
+import { sendThankYouEmail } from '@/lib/email-sender';
 
 /**
- * Submit Lead to Zoho CRM
- * This endpoint receives form data and creates a lead in Zoho CRM
+ * Submit Lead to Zoho CRM and Send Thank You Email
+ * This endpoint receives form data, creates a lead in Zoho CRM, and sends a thank you email
  */
 export async function POST(request) {
   try {
@@ -131,10 +132,24 @@ export async function POST(request) {
 
     // Check if lead was created successfully
     if (responseData.data && responseData.data[0]?.status === 'success') {
+      const leadId = responseData.data[0].details.id;
+      
+      // Send thank you email (non-blocking - don't fail the request if email fails)
+      try {
+        console.log('📧 Attempting to send thank you email...');
+        await sendThankYouEmail(email, parentName, studentName);
+        console.log('✅ Thank you email sent successfully');
+      } catch (emailError) {
+        // Log the error but don't fail the entire request
+        console.error('⚠️ Failed to send thank you email:', emailError.message);
+        console.error('Note: Lead was created successfully in Zoho CRM, but email failed');
+        // Continue with success response even if email fails
+      }
+
       return NextResponse.json({
         success: true,
         message: 'Lead created successfully',
-        leadId: responseData.data[0].details.id
+        leadId: leadId
       });
     } else {
       return NextResponse.json(

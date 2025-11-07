@@ -41,7 +41,7 @@ const SLIDES = [
     videoId: "kGOOf9Y6EBs",
     alt: "Smart Class Video",
     description:
-      "How teachers help students to unlock their true potential and encourages them to discover their unique talent.",
+      "How teachers help students to unlock their true potential and encourage them to discover their unique talent.",
   },
 ];
 
