@@ -18,11 +18,11 @@ export default function Home() {
       <WhyChoose />
       <Ranks />
       <HigherEducation />
+      <Legacy />
+      <Highlights />
+      <Stats />
       <Curriculum />
       <Why />
-      <Legacy />
-      <Stats />
-      <Highlights />
       <Contact />
     </>
   );
