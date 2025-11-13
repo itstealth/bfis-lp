@@ -21,6 +21,14 @@ const robotoSlab = Roboto_Slab({
 export const metadata = {
   title: "Brookfield International School",
   description: "Brookfield International School - Excellence in Education",
+  icons: {
+    icon: "https://www.bfis.in/assets/favicon.png",
+    apple: "https://www.bfis.in/assets/favicon.png",
+    other: {
+      rel: "icon",
+      url: "https://www.bfis.in/assets/favicon.png",
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
