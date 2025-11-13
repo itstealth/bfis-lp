@@ -28,8 +28,8 @@ export default function Hero() {
       desktop: "/Hero-Banner.png",
     },
     {
-      mobile: "/hero2-sm.jpg",
-      desktop: "/hero2.jpg",
+      mobile: "/hero2-sm.png",
+      desktop: "/hero2.png",
     },
   ];
 
