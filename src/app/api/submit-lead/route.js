@@ -8,8 +8,8 @@ import { sendThankYouEmail } from '@/lib/email-sender';
 const validateName = (name) => {
   const nameRegex = /^[A-Za-z\s]+$/;
   if (!name || !name.trim()) return 'Name is required';
-  if (!nameRegex.test(name)) return 'Name can only contain alphabets and spaces';
-  if (name.trim().length < 2) return 'Name must be at least 2 characters';
+  if (!nameRegex.test(name)) return 'Only letters and spaces allowed';
+  if (name.trim().length < 2) return 'Name too short (min 2 letters)';
   return null;
 };
 
@@ -23,7 +23,7 @@ const validateEmail = (email) => {
 const validatePhone = (phone) => {
   const phoneRegex = /^[6-9]\d{9}$/;
   if (!phone || !phone.trim()) return 'Phone number is required';
-  if (!phoneRegex.test(phone)) return 'Phone must be a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9';
+  if (!phoneRegex.test(phone)) return 'Enter valid 10-digit mobile number';
   return null;
 };
 
@@ -109,7 +109,7 @@ export async function POST(request) {
     if (Object.keys(validationErrors).length > 0) {
       return NextResponse.json(
         { 
-          error: 'Validation failed',
+          error: 'Please check your information',
           validationErrors 
         },
         { status: 400 }
@@ -152,7 +152,7 @@ export async function POST(request) {
     if (isDuplicate) {
       return NextResponse.json(
         { 
-          error: 'This phone number has already been registered. Please use a different number or contact us directly.',
+          error: 'This number is already registered',
           field: 'phone'
         },
         { status: 409 } // 409 Conflict

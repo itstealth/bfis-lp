@@ -83,29 +83,29 @@ export default function Hero() {
   // Validation functions
   const validateName = (name) => {
     const nameRegex = /^[A-Za-z\s]+$/;
-    if (!name.trim()) return "This field is required";
-    if (!nameRegex.test(name)) return "Only alphabets and spaces are allowed";
-    if (name.trim().length < 2) return "Name must be at least 2 characters";
+    if (!name.trim()) return "Name is required";
+    if (!nameRegex.test(name)) return "Only letters and spaces allowed";
+    if (name.trim().length < 2) return "Name too short (min 2 letters)";
     return "";
   };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email.trim()) return "Email is required";
-    if (!emailRegex.test(email)) return "Please enter a valid email address";
+    if (!emailRegex.test(email)) return "Invalid email format";
     return "";
   };
 
   const validatePhone = (phone) => {
     const phoneRegex = /^[6-9]\d{9}$/;
     if (!phone.trim()) return "Phone number is required";
-    if (!phoneRegex.test(phone)) return "Enter a valid 10-digit Indian mobile number";
+    if (!phoneRegex.test(phone)) return "Enter valid 10-digit mobile number";
     
     // Check localStorage for duplicate
     if (typeof window !== "undefined") {
       const submittedPhones = JSON.parse(localStorage.getItem("submittedPhones") || "[]");
       if (submittedPhones.includes(phone)) {
-        return "This phone number has already been submitted";
+        return "This number was already used";
       }
     }
     return "";
@@ -189,7 +189,7 @@ export default function Hero() {
     if (hasErrors) {
       setSubmitStatus({
         type: "error",
-        message: "Please fix the errors in the form before submitting.",
+        message: "Please fix the errors above",
       });
       return;
     }
@@ -242,7 +242,7 @@ export default function Hero() {
           setErrors(data.validationErrors);
           setSubmitStatus({
             type: "error",
-            message: "Please fix the validation errors and try again.",
+            message: "Please check your information",
           });
         } else if (data.field === 'phone') {
           // Handle duplicate phone error specifically
@@ -254,7 +254,7 @@ export default function Hero() {
         } else {
           setSubmitStatus({
             type: "error",
-            message: data.error || "Failed to submit form. Please try again.",
+            message: data.error || "Submission failed. Please try again",
           });
         }
       }
@@ -262,7 +262,7 @@ export default function Hero() {
       console.error("Form submission error:", error);
       setSubmitStatus({
         type: "error",
-        message: "An error occurred. Please try again later.",
+        message: "Connection error. Please try again",
       });
     } finally {
       setIsSubmitting(false);
