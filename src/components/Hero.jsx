@@ -28,7 +28,7 @@ export default function Hero() {
       desktop: "/Hero-Banner.png",
     },
     {
-      mobile: "/hero2-sm.png",
+      mobile: "/hero2-sm.jpg",
       desktop: "/hero2.jpg",
     },
   ];
@@ -46,7 +46,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 100000); // Change slide every 5 seconds
+    }, 3000); // Change slide every 5 seconds
 
     return () => clearInterval(timer);
   }, [slides.length]);
