@@ -234,7 +234,7 @@ export default function Hero() {
         }
         
         // Redirect to thank-you.html page
-        const thankYouUrl = `/thank-you.html${params.toString() ? '?' + params.toString() : ''}`;
+        const thankYouUrl = `/info/admissions/thank-you.html`;
         window.location.href = thankYouUrl;
       } else {
         // Handle server-side validation errors
