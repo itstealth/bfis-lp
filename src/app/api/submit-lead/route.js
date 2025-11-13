@@ -3,6 +3,64 @@ import { getValidAccessToken } from '@/lib/zoho-token-manager';
 import { sendThankYouEmail } from '@/lib/email-sender';
 
 /**
+ * Validation helper functions
+ */
+const validateName = (name) => {
+  const nameRegex = /^[A-Za-z\s]+$/;
+  if (!name || !name.trim()) return 'Name is required';
+  if (!nameRegex.test(name)) return 'Name can only contain alphabets and spaces';
+  if (name.trim().length < 2) return 'Name must be at least 2 characters';
+  return null;
+};
+
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !email.trim()) return 'Email is required';
+  if (!emailRegex.test(email)) return 'Invalid email format';
+  return null;
+};
+
+const validatePhone = (phone) => {
+  const phoneRegex = /^[6-9]\d{9}$/;
+  if (!phone || !phone.trim()) return 'Phone number is required';
+  if (!phoneRegex.test(phone)) return 'Phone must be a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9';
+  return null;
+};
+
+/**
+ * Check if phone number already exists in Zoho CRM
+ */
+const checkDuplicatePhone = async (phone, accessToken) => {
+  try {
+    console.log('🔍 Checking for duplicate phone number:', phone);
+    
+    const searchUrl = `${process.env.ZOHO_API_URL}/crm/v2/Leads/search?criteria=(Phone:equals:${phone})`;
+    
+    const response = await fetch(searchUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Zoho-oauthtoken ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    
+    if (response.ok && data.data && data.data.length > 0) {
+      console.log('⚠️ Duplicate phone number found in Zoho CRM');
+      return true;
+    }
+    
+    console.log('✅ No duplicate phone number found');
+    return false;
+  } catch (error) {
+    console.error('Error checking duplicate phone:', error);
+    // If check fails, allow submission to proceed (fail open)
+    return false;
+  }
+};
+
+/**
  * Submit Lead to Zoho CRM and Send Thank You Email
  * This endpoint receives form data, creates a lead in Zoho CRM, and sends a thank you email
  */
@@ -24,9 +82,36 @@ export async function POST(request) {
     } = body;
 
     // Validate required fields
-    if (!parentName || !email || !phone) {
+    if (!parentName || !email || !phone || !classApplyingFor) {
       return NextResponse.json(
         { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Server-side validation
+    const validationErrors = {};
+    
+    const parentNameError = validateName(parentName);
+    if (parentNameError) validationErrors.parentName = parentNameError;
+    
+    if (studentName) {
+      const studentNameError = validateName(studentName);
+      if (studentNameError) validationErrors.studentName = studentNameError;
+    }
+    
+    const emailError = validateEmail(email);
+    if (emailError) validationErrors.email = emailError;
+    
+    const phoneError = validatePhone(phone);
+    if (phoneError) validationErrors.phone = phoneError;
+
+    if (Object.keys(validationErrors).length > 0) {
+      return NextResponse.json(
+        { 
+          error: 'Validation failed',
+          validationErrors 
+        },
         { status: 400 }
       );
     }
@@ -59,6 +144,18 @@ export async function POST(request) {
           hint: 'Visit http://localhost:3000/api/zoho-debug to check integration status'
         },
         { status: 401 }
+      );
+    }
+
+    // Check for duplicate phone number in Zoho CRM
+    const isDuplicate = await checkDuplicatePhone(phone, accessToken);
+    if (isDuplicate) {
+      return NextResponse.json(
+        { 
+          error: 'This phone number has already been registered. Please use a different number or contact us directly.',
+          field: 'phone'
+        },
+        { status: 409 } // 409 Conflict
       );
     }
 

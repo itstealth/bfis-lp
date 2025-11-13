@@ -21,6 +21,14 @@ export default function Hero() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [errors, setErrors] = useState({
+    parentName: "",
+    studentName: "",
+    email: "",
+    phone: "",
+    classApplyingFor: "",
+  });
+  const [touchedFields, setTouchedFields] = useState({});
 
   const slides = [
     {
@@ -72,13 +80,120 @@ export default function Hero() {
     }
   }, []);
 
+  // Validation functions
+  const validateName = (name) => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (!name.trim()) return "This field is required";
+    if (!nameRegex.test(name)) return "Only alphabets and spaces are allowed";
+    if (name.trim().length < 2) return "Name must be at least 2 characters";
+    return "";
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) return "Email is required";
+    if (!emailRegex.test(email)) return "Please enter a valid email address";
+    return "";
+  };
+
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phone.trim()) return "Phone number is required";
+    if (!phoneRegex.test(phone)) return "Enter a valid 10-digit Indian mobile number";
+    
+    // Check localStorage for duplicate
+    if (typeof window !== "undefined") {
+      const submittedPhones = JSON.parse(localStorage.getItem("submittedPhones") || "[]");
+      if (submittedPhones.includes(phone)) {
+        return "This phone number has already been submitted";
+      }
+    }
+    return "";
+  };
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case "parentName":
+      case "studentName":
+        return validateName(value);
+      case "email":
+        return validateEmail(value);
+      case "phone":
+        return validatePhone(value);
+      case "classApplyingFor":
+        return value ? "" : "Please select a class";
+      default:
+        return "";
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
+    // For name fields, prevent non-alphabetic characters
+    if ((name === "parentName" || name === "studentName") && value) {
+      const filteredValue = value.replace(/[^A-Za-z\s]/g, "");
+      setFormData((prev) => ({ ...prev, [name]: filteredValue }));
+      
+      // Validate on change if field was touched
+      if (touchedFields[name]) {
+        setErrors((prev) => ({ ...prev, [name]: validateField(name, filteredValue) }));
+      }
+      return;
+    }
+
+    // For phone, allow only digits and limit to 10
+    if (name === "phone") {
+      const filteredValue = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, [name]: filteredValue }));
+      
+      if (touchedFields[name]) {
+        setErrors((prev) => ({ ...prev, [name]: validateField(name, filteredValue) }));
+      }
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    // Validate on change if field was touched
+    if (touchedFields[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouchedFields((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Mark all fields as touched
+    const allTouched = Object.keys(formData).reduce((acc, key) => {
+      acc[key] = true;
+      return acc;
+    }, {});
+    setTouchedFields(allTouched);
+
+    // Validate all fields
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      newErrors[key] = validateField(key, formData[key]);
+    });
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    const hasErrors = Object.values(newErrors).some((error) => error !== "");
+    if (hasErrors) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please fix the errors in the form before submitting.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -91,7 +206,7 @@ export default function Hero() {
 
       console.log("📤 Submitting lead with UTM data:", submissionData);
 
-      const response = await fetch("/api/submit-lead", {
+      const response = await fetch("/info/admissions/api/submit-lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,6 +217,13 @@ export default function Hero() {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        // Store phone number in localStorage to prevent duplicate submissions
+        if (typeof window !== "undefined") {
+          const submittedPhones = JSON.parse(localStorage.getItem("submittedPhones") || "[]");
+          submittedPhones.push(formData.phone);
+          localStorage.setItem("submittedPhones", JSON.stringify(submittedPhones));
+        }
+
         // Build URL with parent and student names for personalization
         const params = new URLSearchParams();
         if (formData.parentName) {
@@ -115,10 +237,26 @@ export default function Hero() {
         const thankYouUrl = `/thank-you.html${params.toString() ? '?' + params.toString() : ''}`;
         window.location.href = thankYouUrl;
       } else {
-        setSubmitStatus({
-          type: "error",
-          message: data.error || "Failed to submit form. Please try again.",
-        });
+        // Handle server-side validation errors
+        if (data.validationErrors) {
+          setErrors(data.validationErrors);
+          setSubmitStatus({
+            type: "error",
+            message: "Please fix the validation errors and try again.",
+          });
+        } else if (data.field === 'phone') {
+          // Handle duplicate phone error specifically
+          setErrors((prev) => ({ ...prev, phone: data.error }));
+          setSubmitStatus({
+            type: "error",
+            message: data.error,
+          });
+        } else {
+          setSubmitStatus({
+            type: "error",
+            message: data.error || "Failed to submit form. Please try again.",
+          });
+        }
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -229,7 +367,7 @@ export default function Hero() {
         <div className="flex-1 flex justify-center items-center w-full max-w-md lg:pl-8 mt-24 sm:mt-0">
           <form
             onSubmit={handleSubmit}
-            className="w-full bg-white/95 scale-90 shadow-xl rounded-[2rem] px-10 pt-8 pb-8 flex flex-col gap-4 min-w-[340px] max-w-[400px]"
+            className="w-full bg-white/95 scale-90 shadow-xl rounded-4xl px-10 pt-8 pb-8 flex flex-col gap-4 min-w-[340px] max-w-[400px]"
             style={{ boxShadow: "0 4px 32px 0 rgba(28,31,39,0.13)" }}
           >
             <h3 className="text-xl font-medium text-center text-[#18181b]">
@@ -252,54 +390,110 @@ export default function Hero() {
               </div>
             )}
 
-            <input
-              type="text"
-              name="parentName"
-              value={formData.parentName}
-              onChange={handleChange}
-              placeholder="Parent's Name"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
-              required
-              disabled={isSubmitting}
-            />
-            <input
-              type="text"
-              name="studentName"
-              value={formData.studentName}
-              onChange={handleChange}
-              placeholder="Student's Name"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
-              required
-              disabled={isSubmitting}
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
-              required
-              disabled={isSubmitting}
-            />
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Phone"
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base"
-              required
-              disabled={isSubmitting}
-            />
-            <select
-              name="classApplyingFor"
-              value={formData.classApplyingFor}
-              onChange={handleChange}
-              className="px-5 py-3 border border-[#d7d7dc] rounded-md focus:ring-2 focus:ring-[#acf15c] focus:outline-none transition text-base bg-white cursor-pointer"
-              required
-              disabled={isSubmitting}
-            >
+            <div className="relative">
+              <input
+                type="text"
+                name="parentName"
+                value={formData.parentName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Parent's Name"
+                className={`px-5 py-3 border rounded-md focus:ring-2 focus:outline-none transition-all text-base w-full ${
+                  errors.parentName && touchedFields.parentName
+                    ? "border-red-500 focus:ring-red-200"
+                    : formData.parentName && !errors.parentName
+                    ? "border-green-500 focus:ring-green-200"
+                    : "border-[#d7d7dc] focus:ring-[#acf15c]"
+                }`}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.parentName && touchedFields.parentName && (
+                <p className="text-red-500 text-xs mt-1 animate-fadeIn">{errors.parentName}</p>
+              )}
+            </div>
+            <div className="relative">
+              <input
+                type="text"
+                name="studentName"
+                value={formData.studentName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Student's Name"
+                className={`px-5 py-3 border rounded-md focus:ring-2 focus:outline-none transition-all text-base w-full ${
+                  errors.studentName && touchedFields.studentName
+                    ? "border-red-500 focus:ring-red-200"
+                    : formData.studentName && !errors.studentName
+                    ? "border-green-500 focus:ring-green-200"
+                    : "border-[#d7d7dc] focus:ring-[#acf15c]"
+                }`}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.studentName && touchedFields.studentName && (
+                <p className="text-red-500 text-xs mt-1 animate-fadeIn">{errors.studentName}</p>
+              )}
+            </div>
+            <div className="relative">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Email"
+                className={`px-5 py-3 border rounded-md focus:ring-2 focus:outline-none transition-all text-base w-full ${
+                  errors.email && touchedFields.email
+                    ? "border-red-500 focus:ring-red-200"
+                    : formData.email && !errors.email
+                    ? "border-green-500 focus:ring-green-200"
+                    : "border-[#d7d7dc] focus:ring-[#acf15c]"
+                }`}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.email && touchedFields.email && (
+                <p className="text-red-500 text-xs mt-1 animate-fadeIn">{errors.email}</p>
+              )}
+            </div>
+            <div className="relative">
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Phone"
+                className={`px-5 py-3 border rounded-md focus:ring-2 focus:outline-none transition-all text-base w-full ${
+                  errors.phone && touchedFields.phone
+                    ? "border-red-500 focus:ring-red-200"
+                    : formData.phone && !errors.phone
+                    ? "border-green-500 focus:ring-green-200"
+                    : "border-[#d7d7dc] focus:ring-[#acf15c]"
+                }`}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.phone && touchedFields.phone && (
+                <p className="text-red-500 text-xs mt-1 animate-fadeIn">{errors.phone}</p>
+              )}
+            </div>
+            <div className="relative">
+              <select
+                name="classApplyingFor"
+                value={formData.classApplyingFor}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={`px-5 py-3 border rounded-md focus:ring-2 focus:outline-none transition-all text-base bg-white cursor-pointer w-full ${
+                  errors.classApplyingFor && touchedFields.classApplyingFor
+                    ? "border-red-500 focus:ring-red-200"
+                    : formData.classApplyingFor && !errors.classApplyingFor
+                    ? "border-green-500 focus:ring-green-200"
+                    : "border-[#d7d7dc] focus:ring-[#acf15c]"
+                }`}
+                required
+                disabled={isSubmitting}
+              >
               <option value="" disabled>
                 Class Applying For
               </option>
@@ -319,7 +513,11 @@ export default function Hero() {
               <option value="grade-x">Grade X</option>
               <option value="grade-xi">Grade XI</option>
               <option value="grade-xii">Grade XII</option>
-            </select>
+              </select>
+              {errors.classApplyingFor && touchedFields.classApplyingFor && (
+                <p className="text-red-500 text-xs mt-1 animate-fadeIn">{errors.classApplyingFor}</p>
+              )}
+            </div>
             <button
               type="submit"
               disabled={isSubmitting}
