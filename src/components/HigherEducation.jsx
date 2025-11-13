@@ -4,27 +4,27 @@ const educationData = [
   {
     title: "Pre-Primary",
     description: "for 3-5 Years",
-    image: "/classes/pre-primary.webp",
+    image: "/info/admissions/classes/pre-primary.webp",
   },
   {
     title: "Primary",
     description: "for Grade 1-5",
-    image: "/classes/primary.webp",
+    image: "/info/admissions/classes/primary.webp",
   },
   {
     title: "Middle School",
     description: "for Grade 6-8",
-    image: "/classes/middle.webp",
+    image: "/info/admissions/classes/middle.webp",
   },
   {
     title: "High School",
     description: "for Grade 9-10",
-    image: "/classes/high.webp",
+    image: "/info/admissions/classes/high.webp",
   },
   {
     title: "Higher Secondary",
     description: "for Grade 11-12",
-    image: "/classes/senior.webp",
+    image: "/info/admissions/classes/senior.webp",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function HigherEducation() {
   return (
     <section
       className="relative bg-cover bg-center sm:py-20 py-10"
-      style={{ backgroundImage: "url('/HigherEdu-Bg.png')" }}
+      style={{ backgroundImage: "url('/info/admissions/HigherEdu-Bg.png')" }}
     >
       <div className="container relative mx-auto max-w-7xl px-4">
         <h2 className="text-center text-2xl sm:text-3xl font-bold text-white md:text-4xl">

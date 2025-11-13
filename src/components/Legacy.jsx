@@ -30,21 +30,21 @@ export default function Legacy() {
         <div className="hidden sm:grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mt-12">
           <div className="h-[330px] w-full rounded-3xl">
             <img
-              src="/legacy/legacy1.webp"
+              src="/info/admissions/legacy/legacy1.webp"
               alt="Gallery image"
               className="gallery-image object-cover rounded-3xl hover:scale-105 transition-all duration-700 ease-in-out mx-auto w-full h-full"
             />
           </div>
           <div className="h-[330px] w-full rounded-3xl">
             <img
-              src="/legacy/legacy2.webp"
+              src="/info/admissions/legacy/legacy2.webp"
               alt="Gallery image"
               className="gallery-image object-cover rounded-3xl hover:scale-105 transition-all duration-700 ease-in-out mx-auto w-full h-full"
             />
           </div>
           <div className="h-[330px] w-full rounded-3xl">
             <img
-              src="/legacy/legacy3.webp"
+              src="/info/admissions/legacy/legacy3.webp"
               alt="Gallery image"
               className="gallery-image object-cover rounded-3xl hover:scale-105 transition-all duration-700 ease-in-out mx-auto w-full h-full"
             />

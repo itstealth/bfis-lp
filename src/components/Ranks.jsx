@@ -15,7 +15,7 @@ export default function Ranks() {
             </h2>
 
             <img
-              src="/ranks/unitedKingdom-logo.png"
+              src="/info/admissions/ranks/unitedKingdom-logo.png"
               alt="World Book of Records UK"
               className="mt-8 h-auto max-w-full select-none transition-transform duration-300 hover:scale-[1.02]"
               draggable={false}
@@ -41,7 +41,7 @@ export default function Ranks() {
             <div className="mt-8 flex flex-col gap-6">
               <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
                 <img
-                  src="/ranks/rank1.png"
+                  src="/info/admissions/ranks/rank1.png"
                   alt="1st Position"
                   className="h-auto max-w-full select-none transition-transform duration-300 hover:scale-[1.02]"
                   draggable={false}
@@ -51,7 +51,7 @@ export default function Ranks() {
 
               <div className="flex items-center gap-6">
                 <img
-                  src="/ranks/times_of_india.png"
+                  src="/info/admissions/ranks/times_of_india.png"
                   alt="The Times of India"
                   className="h-auto max-w-full select-none opacity-90 transition-opacity duration-300 hover:opacity-100"
                   draggable={false}

@@ -6,7 +6,7 @@ const TABS = [
   {
     title: "Global Exposure",
     content: {
-      img: "/academics.jpg", // placeholder path, update to your real image path
+      img: "/info/admissions/academics.jpg", // placeholder path, update to your real image path
       text: (
         <>
           <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
@@ -21,7 +21,7 @@ const TABS = [
   {
     title: "Award-Winning",
     content: {
-      img: "/award.jpg",
+      img: "/info/admissions/award.jpg",
       text: (
         <>
           <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">
@@ -35,7 +35,7 @@ const TABS = [
   {
     title: "Digital Classrooms",
     content: {
-      img: "/digital-classrooms.jpg",
+      img: "/info/admissions/digital-classrooms.jpg",
       text: (
         <>
           <p className="sm:text-xl text-base leading-normal font-normal text-black mb-4 md:mb-0 md:text-left text-center">

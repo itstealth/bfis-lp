@@ -58,7 +58,7 @@ export function DockButtons() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/call-now.png" alt="phone" width={36} height={36} />
+            <Image src="/info/admissions/call-now.png" alt="phone" width={36} height={36} />
           </Link>
         </DockIcon>
 

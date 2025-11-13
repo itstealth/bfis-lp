@@ -1,8 +1,8 @@
 const stats = [
-  { icon: "/stats/1.png", value: "2000+", label: "Students" },
-  { icon: "/stats/2.png", value: "150+", label: "Faculty" },
-  { icon: "/stats/4.png", value: "100%", label: "Results" },
-  { icon: "/stats/3.png", value: "7+", label: "Acres Campus" },
+  { icon: "/info/admissions/stats/1.png", value: "2000+", label: "Students" },
+  { icon: "/info/admissions/stats/2.png", value: "150+", label: "Faculty" },
+  { icon: "/info/admissions/stats/4.png", value: "100%", label: "Results" },
+  { icon: "/info/admissions/stats/3.png", value: "7+", label: "Acres Campus" },
 ];
 
 export default function Stats() {

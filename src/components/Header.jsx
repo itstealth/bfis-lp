@@ -26,7 +26,7 @@ export default function Header() {
         {/* Left: Logo */}
         <div className="flex items-center gap-4 sm:gap-6">
           <img
-            src="/logo.png"
+            src="/info/admissions/logo.png"
             alt="Brookfield International School"
             className={`w-auto h-12 block sm:h-16 select-none block`}
             draggable={false}
@@ -42,7 +42,7 @@ export default function Header() {
           <a
             href="tel:+919066790662"
             className={`flex items-center gap-2 sm:text-lg text-base font-medium ${
-              scrolled ? "text-white" : "text-black"
+              scrolled ? "text-white" : "text-white"
             }`}
           >
             <Phone className="h-5 w-5" />

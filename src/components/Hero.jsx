@@ -24,12 +24,12 @@ export default function Hero() {
 
   const slides = [
     {
-      mobile: "/Banner-sm.png",
-      desktop: "/Hero-Banner.png",
+      mobile: "/info/admissions/Banner-sm.png",
+      desktop: "/info/admissions/Hero-Banner.png",
     },
     {
-      mobile: "/hero2-sm.png",
-      desktop: "/hero2.png",
+      mobile: "/info/admissions/hero2-sm.png",
+      desktop: "/info/admissions/hero2.png",
     },
   ];
 
