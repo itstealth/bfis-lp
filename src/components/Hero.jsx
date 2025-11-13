@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
@@ -20,6 +20,36 @@ export default function Hero() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      mobile: "/Banner-sm.png",
+      desktop: "/Hero-Banner.png",
+    },
+    {
+      mobile: "/hero2-sm.png",
+      desktop: "/hero2.jpg",
+    },
+  ];
+
+  // Navigation functions
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Auto-slide effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 100000); // Change slide every 5 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   // Capture UTM parameters from URL on component mount
   useEffect(() => {
@@ -102,17 +132,48 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative pt-16 sm:pt-0 min-h-screen w-full overflow-hidden flex items-center">
-      {/* Mobile Background (below md) */}
-      <div
-        className="absolute inset-0 bg-cover bg-[#cfd1d7] bg-no-repeat bg-center md:hidden"
-        style={{ backgroundImage: "url(/Banner-sm.png)" }}
-      />
-      {/* Desktop Background (md and above) */}
-      <div
-        className="hidden md:block absolute inset-0 bg-cover bg-no-repeat bg-center"
-        style={{ backgroundImage: "url(/Hero-Banner.png)" }}
-      />
+    <section
+      id="hero"
+      className="relative flex items-center overflow-hidden pt-16 sm:pt-0 min-h-screen w-full"
+    >
+      {/* Background Slider */}
+      <div className="absolute inset-0 h-full w-full">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {/* Mobile Background */}
+            <div
+              className="absolute inset-0 h-full w-full bg-cover bg-[#cfd1d7] bg-center bg-no-repeat md:hidden"
+              style={{ backgroundImage: `url(${slide.mobile})` }}
+            />
+            {/* Desktop Background */}
+            <div
+              className="hidden md:block absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${slide.desktop})` }}
+            />
+          </div>
+        ))}
+      </div>
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide
+                ? "bg-[#cd3b30] w-8 sm:w-10"
+                : "bg-black hover:bg-black/80"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
       {/* Main Content Grid */}
       <div
         className="relative w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between pl-4 lg:pl-12 py-8 lg:py-0 z-10"
