@@ -4,14 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 
 const images = [
-  "/legacy/1.webp", // infrastructure
-  "/legacy/5.webp", // sports
-  "/legacy/3.webp", // lab
-  "/legacy/4.webp", // smartclass
-  "/legacy/2.webp", // arts
-  "/legacy/legacy1.webp", // legacy1
-  "/legacy/legacy2.webp", // legacy2
-  "/legacy/legacy3.webp", // legacy3
+  "/info/admissions/legacy/1.webp", // infrastructure
+  "/info/admissions/legacy/5.webp", // sports
+  "/info/admissions/legacy/3.webp", // lab
+  "/info/admissions/legacy/4.webp", // smartclass
+  "/info/admissions/legacy/2.webp", // arts
+  "/info/admissions/legacy/legacy1.webp", // legacy1
+  "/info/admissions/legacy/legacy2.webp", // legacy2
+  "/info/admissions/legacy/legacy3.webp", // legacy3
 ];
 
 export default function Gallery() {
