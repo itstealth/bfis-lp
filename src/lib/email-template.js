@@ -27,9 +27,8 @@ export function getThankYouEmailHTML(parentName, studentName) {
           
           <!-- Header with Logo and Brand Colors -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 40px 30px; text-align: center;">
+            <td style="background: url('https://www.bfis.in/info/admissions/bg-image.png') no-repeat center center; background-size: cover;">
               <img src="https://www.bfis.in/assets/images/logo_color.png" alt="Brookfield International School" style="max-width: 180px; height: auto; margin-bottom: 10px;">
-              <h1 style="color: #ffffff; font-size: 28px; margin: 15px 0 0 0; font-weight: 600; letter-spacing: 0.5px;">Thank You for Your Interest!</h1>
             </td>
           </tr>
 
