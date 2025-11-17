@@ -5,7 +5,7 @@ import React from "react";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+// import Image from "next/image";
 // import DrawerDock from "@/components/header/DrawerDock";
 
 /** @type {React.SVGProps<SVGSVGElement>} */
@@ -58,7 +58,7 @@ export function DockButtons() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/info/admissions/call-now.png" alt="phone" width={36} height={36} />
+            <img src="/info/admissions/call-now.png" alt="phone" width={36} height={36} className="w-full h-full object-cover" />
           </Link>
         </DockIcon>
 
