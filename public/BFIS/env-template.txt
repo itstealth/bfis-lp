@@ -1,0 +1,36 @@
+# Zoho CRM Configuration
+# Get these from: https://api-console.zoho.com/ (or https://api-console.zoho.in/ for India)
+ZOHO_CLIENT_ID=your_zoho_client_id_here
+ZOHO_CLIENT_SECRET=your_zoho_client_secret_here
+ZOHO_REDIRECT_URI=https://stealthlearn.in/bfis-lp/BFIS/zoho-callback.php
+
+# IMPORTANT: Use the correct data center for your Zoho account
+# For India (most common): Use accounts.zoho.in
+# For US: Use accounts.zoho.com
+# For EU: Use accounts.zoho.eu
+
+# India Data Center (most common)
+ZOHO_ACCOUNTS_URL=https://accounts.zoho.in
+ZOHO_API_URL=https://www.zohoapis.in
+
+# US Data Center (uncomment if you're in US)
+# ZOHO_ACCOUNTS_URL=https://accounts.zoho.com
+# ZOHO_API_URL=https://www.zohoapis.com
+
+# EU Data Center (uncomment if you're in EU)
+# ZOHO_ACCOUNTS_URL=https://accounts.zoho.eu
+# ZOHO_API_URL=https://www.zohoapis.eu
+
+# Email/SMTP Configuration
+# For GoDaddy, use your hosting provider's SMTP settings
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_app_password_here
+FROM_EMAIL=info@bfis.in
+FROM_NAME=Brookfield International School
+REPLY_TO=info@bfis.in
+
+# Optional: API Endpoint Override
+# NEXT_PUBLIC_API_ENDPOINT=/BFIS/submit-lead.php
+

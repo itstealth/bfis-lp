@@ -1,0 +1,27 @@
+# ✅ CORRECTED .env FILE FOR DIRECT UPLOAD (No BFIS folder)
+# If you uploaded PHP files directly to /bfis-lp/ folder (not /bfis-lp/BFIS/)
+
+# Zoho CRM Configuration
+# Get these from: https://api-console.zoho.in/ (India) or https://api-console.zoho.com/ (US)
+ZOHO_CLIENT_ID=1000.6GYFLOU7UNOVWE8UIZ6XX37RQ92OEB
+ZOHO_CLIENT_SECRET=3ef25a4343ceea8b2af7e4340a135c54bc2dfc74f6
+
+# ✅ CORRECT: Files are directly in bfis-lp folder (no BFIS subfolder)
+ZOHO_REDIRECT_URI=https://stealthlearn.in/bfis-lp/zoho-callback.php
+
+# ✅ Use India data center (based on your callback URL showing accounts.zoho.in)
+ZOHO_ACCOUNTS_URL=https://accounts.zoho.in
+ZOHO_API_URL=https://www.zohoapis.in
+
+# Email/SMTP Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=bfisenquiry@gmail.com
+SMTP_PASSWORD=rleunwymtjnjmycd
+FROM_EMAIL=info@bfis.in
+FROM_NAME=Brookfield International School
+REPLY_TO=info@bfis.in
+
+# Optional: API Endpoint Override (for Next.js frontend)
+NEXT_PUBLIC_API_ENDPOINT=https://stealthlearn.in/bfis-lp/submit-lead.php
+

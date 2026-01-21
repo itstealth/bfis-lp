@@ -206,7 +206,11 @@ export default function Hero() {
 
       console.log("📤 Submitting lead with UTM data:", submissionData);
 
-      const response = await fetch("/info/admissions/api/submit-lead", {
+      // API Endpoint Configuration:
+      // - Development (Next.js): Uses Next.js API route at /api/submit-lead
+      // - Production (PHP): Points to hosted PHP backend at StealthLearn
+      // PHP Backend Location: https://stealthlearn.in/bfis-lp/landing/submit-lead.php
+      const response = await fetch("https://stealthlearn.in/bfis-lp/landing/submit-lead.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -233,7 +237,8 @@ export default function Hero() {
           params.append('studentName', formData.studentName);
         }
         
-        // Redirect to thank-you.html page
+        // Redirect to thank-you.html page (served from public folder)
+        // Use query parameters to pass names for personalization
         const thankYouUrl = `/info/admissions/thank-you.html`;
         window.location.href = thankYouUrl;
       } else {

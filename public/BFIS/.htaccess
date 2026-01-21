@@ -1,0 +1,31 @@
+# Enable rewrite engine for clean URLs
+RewriteEngine On
+RewriteBase /
+
+# API Endpoint Routing
+# Route /info/admissions/api/submit-lead to submit-lead.php
+RewriteCond %{REQUEST_URI} ^/info/admissions/api/submit-lead$
+RewriteRule ^ /BFIS/submit-lead.php [L,QSA]
+
+# Alternative routing if accessed via /BFIS/api/submit-lead
+RewriteCond %{REQUEST_URI} ^/BFIS/api/submit-lead$
+RewriteRule ^ /BFIS/submit-lead.php [L,QSA]
+
+# Protect .env file from public access
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Protect zoho-tokens.json from public access
+<Files "zoho-tokens.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Allow PHP files to execute
+<FilesMatch "\.php$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+

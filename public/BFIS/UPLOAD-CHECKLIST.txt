@@ -1,0 +1,129 @@
+================================================================================
+GO DADDY DEPLOYMENT CHECKLIST - stealthlearn.in/bfis-lp/
+================================================================================
+
+FILES TO UPLOAD TO: /public_html/BFIS/ (or /www/BFIS/)
+================================================================================
+
+REQUIRED PHP FILES:
+  [ ] submit-lead.php
+  [ ] zoho-auth.php
+  [ ] zoho-callback.php
+  [ ] test-email.php
+  [ ] zoho-token-manager.php
+  [ ] config.php
+  [ ] env-loader.php
+
+CONFIGURATION FILES:
+  [ ] .htaccess (protects .env file)
+  [ ] .env (create this file with your credentials)
+
+OPTIONAL DOCUMENTATION:
+  [ ] README-PHP-SETUP.md
+  [ ] QUICK-START.md
+  [ ] DEPLOYMENT-GUIDE.md
+  [ ] env-template.txt
+
+================================================================================
+STEP-BY-STEP UPLOAD INSTRUCTIONS
+================================================================================
+
+1. LOGIN TO CPANEL
+   URL: https://stealthlearn.in:2083
+   Or use FTP: ftp.stealthlearn.in
+
+2. NAVIGATE TO FILE MANAGER
+   - Click "File Manager" in cPanel
+   - Go to: public_html/ or www/
+
+3. CREATE BFIS FOLDER
+   - Click "New Folder"
+   - Name: BFIS
+   - Click "Create"
+
+4. UPLOAD ALL PHP FILES
+   - Enter BFIS folder
+   - Click "Upload"
+   - Select all 7 PHP files from local public/BFIS/ folder
+   - Wait for upload to complete
+
+5. UPLOAD .htaccess FILE
+   - Upload .htaccess file
+   - This protects your .env file
+
+6. CREATE .env FILE
+   - Click "New File" in File Manager
+   - Name: .env (with the dot at the beginning)
+   - Click "Edit"
+   - Copy content from env-template.txt
+   - Replace placeholder values with your actual credentials
+   - Save
+
+7. SET FILE PERMISSIONS
+   - .env → Right-click → Change Permissions → 644
+   - All PHP files → 644
+   - zoho-tokens.json (will be auto-created) → 666
+
+================================================================================
+CONFIGURE .env FILE
+================================================================================
+
+Edit .env file and set these values:
+
+ZOHO_CLIENT_ID=your_actual_client_id
+ZOHO_CLIENT_SECRET=your_actual_client_secret
+ZOHO_REDIRECT_URI=https://stealthlearn.in/BFIS/zoho-callback.php
+ZOHO_ACCOUNTS_URL=https://accounts.zoho.com
+ZOHO_API_URL=https://www.zohoapis.com
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_app_password
+FROM_EMAIL=info@bfis.in
+FROM_NAME=Brookfield International School
+REPLY_TO=info@bfis.in
+
+================================================================================
+UPDATE ZOHO CONSOLE
+================================================================================
+
+1. Go to: https://api-console.zoho.com/
+2. Select your application
+3. Update Redirect URI to:
+   https://stealthlearn.in/BFIS/zoho-callback.php
+
+================================================================================
+UPDATE FRONTEND CODE
+================================================================================
+
+In your Next.js .env.local file, add:
+NEXT_PUBLIC_API_ENDPOINT=https://stealthlearn.in/BFIS/submit-lead.php
+
+Or update ContactForm.jsx and ContactFormModal.jsx to use:
+const apiEndpoint = "https://stealthlearn.in/BFIS/submit-lead.php";
+
+================================================================================
+TEST YOUR SETUP
+================================================================================
+
+1. Test Email Config:
+   https://stealthlearn.in/BFIS/test-email.php
+
+2. Authenticate Zoho:
+   https://stealthlearn.in/BFIS/zoho-auth.php
+
+3. Test Form:
+   Submit contact form and check Zoho CRM
+
+================================================================================
+FINAL URLS
+================================================================================
+
+Form Submission:  https://stealthlearn.in/BFIS/submit-lead.php
+Zoho Auth:        https://stealthlearn.in/BFIS/zoho-auth.php
+Zoho Callback:    https://stealthlearn.in/BFIS/zoho-callback.php
+Test Email:       https://stealthlearn.in/BFIS/test-email.php
+
+================================================================================
+
